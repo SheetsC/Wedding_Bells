@@ -4,8 +4,10 @@ using System.ComponentModel.DataAnnotations;
 
 namespace WeddingBells.API.Models
 {
+    [Table("MealPrefs")]
     public class MealPref
     {
+        [Key]
         public int MealPrefId {get; set;}
 
         [RegularExpression 

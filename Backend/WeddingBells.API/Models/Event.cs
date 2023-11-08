@@ -4,10 +4,11 @@ using System.ComponentModel.DataAnnotations;
 
 namespace WeddingBells.API.Models
 {
-    [Table("Event")]
+    [Table("Events")]
     public class Event
     {
-        public required int EventId{get; set;}
+        [Key]
+        public int EventId{get; set;}
 
 
         [RegularExpression(RegexPatterns.NamePattern, ErrorMessage = "Cannot contain special characters")]

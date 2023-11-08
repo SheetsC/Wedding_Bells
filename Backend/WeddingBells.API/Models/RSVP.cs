@@ -4,8 +4,10 @@ using Microsoft.Extensions.Diagnostics.HealthChecks;
 
 namespace WeddingBells.API.Models
 {
+    [Table("RSVPs")]
     public class RSVP
     {
+        [Key]
         public int RSVP_ID { get; set; }
 
         public bool Attending{get;set;}

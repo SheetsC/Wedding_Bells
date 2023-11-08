@@ -10,6 +10,7 @@ namespace WeddingBells.API.Models
     [Table("Guests")]
     public class Guest
     {
+        [Key]
         public required int GuestId {get; set;}
 
 

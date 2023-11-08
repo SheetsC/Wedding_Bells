@@ -9,7 +9,7 @@ namespace WeddingBells.API.Models
 
         public const string NamePattern= @"^[a-zA-z ]{1,10}$";
 
-        //public const string PasswordPattern
+        public const string PasswordPattern = @"^(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,}$";
 
         //public const string LocationPattern = @"^[a-zA-Z{1,4}]$";
 

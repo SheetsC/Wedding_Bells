@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "4Sww59jYhLQIe9GQYPZ1GVu5oS4Otq06tCCpfxlxI5leK7xRTAqBR1Cb/kThTDlLGW7aXk7qoyw7XyJZLhRcKw==",
+  "dgSpecHash": "oAjsxNxlVZsTAHmSgtBaZB2cR3MfLzvwiaH91dsXZbUrk9CVbAx4wV6UQc33/rtez0Eq14Y2M8cvIxfswaoSzg==",
   "success": true,
   "projectFilePath": "/Users/connorsheets/Development/code/phase-6/Wedding_Bells/Backend/WeddingBells.API/WeddingBells.API.csproj",
   "expectedPackageFiles": [
+    "/Users/connorsheets/.nuget/packages/bcrypt.net-next/4.0.3/bcrypt.net-next.4.0.3.nupkg.sha512",
     "/Users/connorsheets/.nuget/packages/microsoft.aspnetcore.openapi/7.0.13/microsoft.aspnetcore.openapi.7.0.13.nupkg.sha512",
     "/Users/connorsheets/.nuget/packages/microsoft.extensions.apidescription.server/6.0.5/microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
     "/Users/connorsheets/.nuget/packages/microsoft.openapi/1.4.3/microsoft.openapi.1.4.3.nupkg.sha512",
