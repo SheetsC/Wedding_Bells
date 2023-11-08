@@ -8,6 +8,10 @@ namespace WeddingBells.API.Models
     {
         public required int HostId{get; set;}
 
+        public required string FirstName{get; set;}
+
+        public required string LastName{get; set;}
+
         public  required List<Event> Events{get; set;}
     }
 }

@@ -11,7 +11,7 @@ namespace WeddingBells.API.Models
 
         //public const string PasswordPattern
 
-        public const string LocationPattern = @"^[a-zA-Z{1,4}] 
+        //public const string LocationPattern = @"^[a-zA-Z{1,4}]$";
 
 
 

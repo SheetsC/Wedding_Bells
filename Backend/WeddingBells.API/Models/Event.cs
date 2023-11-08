@@ -14,7 +14,7 @@ namespace WeddingBells.API.Models
 
         public required string Title{get; set;}
 
-        
+
         public required string Location{get; set;}
 
         public required int HostId{get;set;}
@@ -22,5 +22,6 @@ namespace WeddingBells.API.Models
         public required Host Host{get; set;}
 
         public required List<RSVP> RSVPs{get; set;}
+
     }
 }
