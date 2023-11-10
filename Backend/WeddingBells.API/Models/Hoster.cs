@@ -10,10 +10,10 @@ namespace WeddingBells.API.Models
 
 {
     [Table("Hosts")]
-    public class Host
+    public class Hoster
     {
         [Key]
-        public int HostId{get; set;}
+        public int HosterId{get; set;}
 
 
         [RegularExpression(RegexPatterns.NamePattern, ErrorMessage = "Try again")]
