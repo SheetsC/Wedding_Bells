@@ -10,7 +10,6 @@ namespace WeddingBells.API.Models
     [Table("Guests")]
     public class Guest
     {
-        [Key]
         public required int GuestId {get; set;}
 
 
@@ -34,12 +33,13 @@ namespace WeddingBells.API.Models
         public required bool Attending {get; set;}
 
 
-        public required List<RSVP> RSVPs {get; set;}    
+        public required bool AddPlusOne {get; set;}
 
-        
+
+        public required List<RSVP> RSVPs {get; set;}
+
+
     }   
 }
 
 
-//i am in the middle of making the many to many relationships and 
-// making the AWS RDS postgres connection

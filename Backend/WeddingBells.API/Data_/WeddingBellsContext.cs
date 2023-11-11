@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using WeddingBells.API.Models;
 
@@ -29,10 +30,15 @@ namespace WeddingBells.API.Data_
                 .WithOne(r => r.Event)
                 .HasForeignKey(r => r.EventId);
 
-            modelBuilder.Entity<RSVP>()
-                .HasMany(r => r.Guests)
-                .
+            modelBuilder.Entity<Guest>()
+                .HasMany(g => g.RSVPs)
+                .WithOne(r => r.Guest)
+                .HasForeignKey(r => r.GuestId);
 
+            modelBuilder.Entity<MealPref>()
+                .HasMany(m => m.RSVPs)
+                .WithOne(r => r.MealPref)
+                .HasForeignKey(r => r.MealPrefId);
             
         }
     }
