@@ -4,7 +4,7 @@ using WeddingBells.API.Models;
 
 namespace WeddingBells.API.Data_
 {
-    public class WeddingBells : DbContext
+    public class WeddingBellsContext : DbContext
     {
         public DbSet<Guest> Guests { get; set; }
         public DbSet<MealPref> MealPrefs { get; set; }
@@ -12,7 +12,7 @@ namespace WeddingBells.API.Data_
         public DbSet<Hoster> Hosts { get; set; }
         public DbSet<Event> Events { get; set; }
 
-        public WeddingBells(DbContextOptions<WeddingBells> options)
+        public WeddingBellsContext(DbContextOptions<WeddingBellsContext> options)
             : base(options)
         {
             
