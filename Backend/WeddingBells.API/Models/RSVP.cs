@@ -14,17 +14,17 @@ namespace WeddingBells.API.Models
  
         public int GuestId {get; set;}
 
-        public required Guest Guest{get; set;}
+        public Guest Guest{get; set;}= null!;
         public int MealPrefId {get; set;}
-        public required MealPref MealPref{get; set;}
+        public MealPref MealPref{get; set;}= null!;
 
-        public required int EventId {get; set;}
+        public int EventId {get; set;}
 
-        public required Event Event{get; set;}
+        public Event Event{get; set;}= null!;
 
-        public required int HosterId{get; set;}
+        public int HosterId{get; set;}
 
-        public required Hoster Hoster{get; set;}
+        public Hoster Hoster{get; set;}= null!;
 
     }
 }

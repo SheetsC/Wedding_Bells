@@ -15,17 +15,17 @@ namespace WeddingBells.API.Models
             RegexPatterns.NamePattern, 
             ErrorMessage = "Try again"
         )]
-        public required string CourseName {get; set;}
+        public string CourseName {get; set;}= null!;
 
-        public required bool Vegitarian {get; set;}
+        public bool Vegitarian {get; set;}
 
-        public required bool Beef{get; set;}
+        public bool Beef{get; set;}
 
-        public required bool Chicken{get; set;}
+        public bool Chicken{get; set;}
 
-        public required bool Fish {get; set;}
+        public bool Fish {get; set;}
 
-        public required List<RSVP> RSVPs{get; set;}
+        public List<RSVP> RSVPs{get; set;}= null!;
 
 
 

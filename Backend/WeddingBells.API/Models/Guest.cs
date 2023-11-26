@@ -10,33 +10,33 @@ namespace WeddingBells.API.Models
     [Table("Guests")]
     public class Guest
     {
-        public required int GuestId {get; set;}
+        public int GuestId {get; set;}
 
 
         [RegularExpression(RegexPatterns.NamePattern, ErrorMessage = "Try again")]
-        public required string FirstName {get; set;}
+        public string FirstName {get; set;}= null!;
 
 
         [RegularExpression(RegexPatterns.NamePattern, ErrorMessage = "Try again")]
-        public required string LastName {get; set;}
+        public string LastName {get; set;}= null!;
 
 
         [RegularExpression(RegexPatterns.PhoneNumberPattern, ErrorMessage = "Invalid Phone Number")]
-        public required string[] PhoneNumber {get; set;}
+        public string[] PhoneNumber {get; set;}= null!;
 
 
 
         [RegularExpression(RegexPatterns.EmailPattern, ErrorMessage = "Invalid Email Address")]
-        public required string EmailAddress {get; set;}
+        public string EmailAddress {get; set;}= null!;
 
 
-        public required bool Attending {get; set;}
+        public bool Attending {get; set;}
 
 
-        public required bool AddPlusOne {get; set;}
+        public bool AddPlusOne {get; set;}
 
 
-        public required List<RSVP> RSVPs {get; set;}
+        public List<RSVP> RSVPs {get; set;}= null!;
 
 
     }   

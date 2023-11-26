@@ -13,16 +13,16 @@ namespace WeddingBells.API.Models
 
         [RegularExpression(RegexPatterns.NamePattern, ErrorMessage = "Cannot contain special characters")]
 
-        public required string Title{get; set;}
+        public string Title{get; set;} = null!;
 
 
-        public required string Location{get; set;}
+        public string Location{get; set;}= null!;
 
-        public required int HosterId{get;set;}
+        public int HosterId{get;set;}
 
-        public required Hoster Hoster{get; set;}
+        public Hoster Hoster{get; set;}= null!;
 
-        public required List<RSVP> RSVPs{get; set;}
+        public  List<RSVP> RSVPs{get; set;}= null!;
 
     }
 }

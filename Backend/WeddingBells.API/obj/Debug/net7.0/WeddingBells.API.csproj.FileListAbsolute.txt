@@ -40,3 +40,8 @@
 /Users/connorsheets/Development/code/phase-6/Wedding_Bells/Backend/WeddingBells.API/obj/Debug/net7.0/WeddingBells.API.pdb
 /Users/connorsheets/Development/code/phase-6/Wedding_Bells/Backend/WeddingBells.API/obj/Debug/net7.0/WeddingBells.API.genruntimeconfig.cache
 /Users/connorsheets/Development/code/phase-6/Wedding_Bells/Backend/WeddingBells.API/obj/Debug/net7.0/ref/WeddingBells.API.dll
+/Users/connorsheets/Development/code/phase-6/Wedding_Bells/Backend/WeddingBells.API/bin/Debug/net7.0/Humanizer.dll
+/Users/connorsheets/Development/code/phase-6/Wedding_Bells/Backend/WeddingBells.API/bin/Debug/net7.0/Microsoft.EntityFrameworkCore.Design.dll
+/Users/connorsheets/Development/code/phase-6/Wedding_Bells/Backend/WeddingBells.API/bin/Debug/net7.0/Microsoft.Extensions.DependencyModel.dll
+/Users/connorsheets/Development/code/phase-6/Wedding_Bells/Backend/WeddingBells.API/bin/Debug/net7.0/Mono.TextTemplating.dll
+/Users/connorsheets/Development/code/phase-6/Wedding_Bells/Backend/WeddingBells.API/bin/Debug/net7.0/System.CodeDom.dll

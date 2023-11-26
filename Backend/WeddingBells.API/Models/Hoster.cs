@@ -17,29 +17,29 @@ namespace WeddingBells.API.Models
 
 
         [RegularExpression(RegexPatterns.NamePattern, ErrorMessage = "Try again")]
-        public required string FirstName{get; set;}
+        public string FirstName{get; set;}= null!;
 
 
         [RegularExpression(RegexPatterns.NamePattern, ErrorMessage = "Try again")]
-        public required string LastName{get; set;}
+        public string LastName{get; set;}= null!;
 
 
         [RegularExpression(RegexPatterns.PhoneNumberPattern, ErrorMessage = "Invalid Phone Number")]
-        public required string PhoneNumber {get; set;}
+        public string PhoneNumber {get; set;}= null!;
 
 
         [RegularExpression(RegexPatterns.EmailPattern, ErrorMessage = "Invalid Email Address")]
-        public required string EmailAddress {get; set;}
+        public string EmailAddress {get; set;}= null!;
 
 
         private string _password = string.Empty;
 
         [RegularExpression(RegexPatterns.PasswordPattern, ErrorMessage = "Needs 8 character w/ one Upper and one number")]
-        public required string Password
+        public string Password
         {
             get { return _password; }
             set { _password = BCrypt.Net.BCrypt.HashPassword(value);}
         }
-        public  required List<Event> Events{get; set;}
+        public   List<Event> Events{get; set;}= null!;
     }
 }
