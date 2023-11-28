@@ -22,7 +22,7 @@ namespace WeddingBells.API.Models
 
         public Hoster Hoster{get; set;}= null!;
 
-        public  List<RSVP> RSVPs{get; set;}= null!;
+        public  List<RSVP>? RSVPs{get; set;}
 
     }
 }

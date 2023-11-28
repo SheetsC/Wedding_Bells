@@ -11,8 +11,8 @@ using WeddingBells.API.Data_;
 namespace WeddingBells.API.Migrations
 {
     [DbContext(typeof(WeddingBellsContext))]
-    [Migration("20231126053039_wholeSchema")]
-    partial class wholeSchema
+    [Migration("20231128180216_lighterValidations")]
+    partial class lighterValidations
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
