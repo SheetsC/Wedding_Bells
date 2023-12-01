@@ -26,6 +26,7 @@ public class LoginController : ControllerBase
         else if (responseMatch != null && BCrypt.Net.BCrypt.Verify(loginModel.Password, responseMatch.Password))
         {
             responseMatch.LoggedIn = true;
+            await _context.SaveChangesAsync();
             return Ok(new {message = "Login Successful"});
         }
         else 
