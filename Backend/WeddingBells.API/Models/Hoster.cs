@@ -40,6 +40,8 @@ namespace WeddingBells.API.Models
             get { return _password; }
             set { _password = BCrypt.Net.BCrypt.HashPassword(value);}
         }
+
+        public bool LoggedIn {get;set;}
         public  List<Event>? Events {get; set;}
     }
 }
