@@ -1,24 +1,37 @@
+using System.Text;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
+using Microsoft.IdentityModel.Tokens;
 using WeddingBells.API.Data_;
 
 var builder = WebApplication.CreateBuilder(args);
+var tokenPass = Environment.GetEnvironmentVariable("tokenPass")
+    ?? throw new InvalidOperationException("JWT token password not found in environment variables");
 
-// Add services to the container.
+
+
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(options =>
+    {
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuerSigningKey = true,
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(tokenPass)),
+        };
+    });
 
 builder.Services.AddControllers();
-//var connectionString = Environment.GetEnvironmentVariable("wbDB");
-var connectionString = builder.Configuration.GetConnectionString("wbDB");
+var connectionString = Environment.GetEnvironmentVariable("wbDB");
+//var connectionString = builder.Configuration.GetConnectionString("wbDB");
 builder.Services.AddDbContext<WeddingBellsContext>(options =>
     options.UseNpgsql(connectionString));
     
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
-
-// Configure the HTTP request pipeline.
+//ui for testing endpoints
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();

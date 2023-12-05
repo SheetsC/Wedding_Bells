@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using WeddingBells.API.Data_;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 //utilize depencecy injections for decoupling 
 
@@ -18,11 +19,11 @@ public class HomeController : ControllerBase
 
     
     [HttpGet]
-    public IActionResult GetGuestCount()
+    public async Task<IActionResult> GetGuestCount()
     {
         try
         {
-            var guestCount = _context.Guests.Count();
+            var guestCount = await _context.Guests.CountAsync();
             return Ok($"Total Guests: {guestCount}");
         }
         catch (Exception ex)

@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using WeddingBells.API.Data_;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 //utilize depencecy injections for decoupling 
 
@@ -18,11 +19,11 @@ public class HosterController : ControllerBase
 
     
     [HttpGet]
-    public IActionResult GetHostCount()
+    public async Task<IActionResult> GetHostCount()
     {
         try
         {
-            var hosterCount = _context.Hosts.Count();
+            var hosterCount = await _context.Hosts.CountAsync();
             return Ok(($"Total Hosts: {hosterCount}"));
         }
         catch (Exception ex)
@@ -31,9 +32,5 @@ public class HosterController : ControllerBase
             Console.WriteLine($"An error occurred: {ex.Message}");
             return StatusCode(500, "An error occurred while processing your request.");
         }
-    }
- 
-
-   
-        
+    }       
 }
