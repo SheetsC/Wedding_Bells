@@ -30,6 +30,8 @@ builder.Services.AddDbContext<WeddingBellsContext>(options =>
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.WebHost.UseUrls("http://*:5021");
+
 var app = builder.Build();
 //ui for testing endpoints
 if (app.Environment.IsDevelopment())

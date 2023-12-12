@@ -7,10 +7,10 @@ EXPOSE 7299
 # Use the SDK image to build the application
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 WORKDIR /src
-COPY ["WeddingBells.API/WeddingBells.API.csproj", "WeddingBells.API/"]
-RUN dotnet restore "WeddingBells.API/WeddingBells.API.csproj"
+COPY ["WeddingBells.API.csproj", "./"]
+RUN dotnet restore "./WeddingBells.API.csproj"
 COPY . .
-WORKDIR "/src/WeddingBells.API"
+WORKDIR "/src/"
 RUN dotnet build "WeddingBells.API.csproj" -c Release -o /app/build
 
 # Publish the application
@@ -22,3 +22,4 @@ FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "WeddingBells.API.dll"]
+
