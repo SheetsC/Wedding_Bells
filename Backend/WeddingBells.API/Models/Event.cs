@@ -18,11 +18,18 @@ namespace WeddingBells.API.Models
 
         public string Location{get; set;}= null!;
 
+        public string Date{get; set;} = null!; 
+
+        public string Description{get;set;} = null!;
         public int HosterId{get;set;}
 
         public Hoster Hoster{get; set;}= null!;
 
+
+
         public  List<RSVP>? RSVPs{get; set;}
+
+
 
     }
 }

@@ -60,7 +60,7 @@ public class LoginController : ControllerBase
     [HttpPost]
     public async Task<IActionResult> Login([FromBody]LoginModel loginModel)
     {
-        var responseMatch = await _context.Hosts.FirstOrDefaultAsync(u => u.EmailAddress == loginModel.EmailAddress);
+        var responseMatch = await _context.Hosts.FirstOrDefaultAsync(h => h.EmailAddress == loginModel.EmailAddress);
         if (responseMatch == null)
         {
             return Unauthorized(new { message = "No associated Email" });

@@ -28,6 +28,17 @@ builder.Services.AddDbContext<WeddingBellsContext>(options =>
     options.UseNpgsql(connectionString));
     
 builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowSpecificOrigin",
+        builder =>
+        {
+            builder.WithOrigins("https://weddingbells-api.onrender.com", "http://localhost:3000")
+                   .AllowAnyHeader()
+                   .AllowAnyMethod();
+        });
+});
+
 builder.Services.AddSwaggerGen();
 
 builder.WebHost.UseUrls("http://*:5021");
@@ -45,5 +56,8 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.UseCors("AllowSpecificOrigin");
+
 
 app.Run();
