@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 namespace WeddinBells.API.Controller;
 
 [ApiController]
-[Route("[controller]/{EventId}")]
+[Route("[controller]/{eventId}")]
 public class EventController : ControllerBase
 {
     public readonly WeddingBellsContext _context;
@@ -17,7 +17,7 @@ public class EventController : ControllerBase
         _context = context; 
     }
 
-    [HttpGet("{eventId}")]
+    [HttpGet]
 
     public async Task<IActionResult> ShowEventInfo([FromRoute]int eventId)
     {
