@@ -17,12 +17,13 @@ public class EventController : ControllerBase
         _context = context; 
     }
 
-    [HttpGet]
-    public async Task<IActionResult> ShowEventInfo(int MyEventId)
+    [HttpGet("{eventId}")]
+
+    public async Task<IActionResult> ShowEventInfo([FromRoute]int eventId)
     {
         try 
         {
-            var MyEvent = await _context.Events.FirstOrDefaultAsync(e => e.EventId == MyEventId);
+            var MyEvent = await _context.Events.FirstOrDefaultAsync(e => e.EventId == eventId);
             if(MyEvent == null)
             {
                 return Unauthorized(new { message = "Cannot connect to Events" });
