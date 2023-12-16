@@ -24,20 +24,33 @@ public class LoginController : ControllerBase
     [HttpPost]
     public async Task<IActionResult> Login([FromBody]LoginModel loginModel)
     {
-        var responseMatch = await _context.Hosts.FirstOrDefaultAsync(h => h.EmailAddress == loginModel.EmailAddress);
-        if (responseMatch == null)
+        if (!ModelState.IsValid)
         {
-            return Unauthorized(new { message = "No associated Email" });
+            return BadRequest(ModelState);
         }
-        else if (BCrypt.Net.BCrypt.Verify(loginModel.Password, responseMatch.Password))
+        try
         {
-            var token = GenerateJwtToken(responseMatch.HosterId.ToString());
-            return Ok(new { message = "Login Successful", token });
+            var responseMatch = await _context.Hosts.FirstOrDefaultAsync(h => h.EmailAddress == loginModel.EmailAddress);
+            if (responseMatch == null)
+            {
+                return Unauthorized(new { message = "No associated Email" });
+            }
+            else if (BCrypt.Net.BCrypt.Verify(loginModel.Password, responseMatch.Password))
+            {
+                var token = GenerateJwtToken(responseMatch.HosterId.ToString());
+                return Ok(new { message = "Login Successful", token });
+            }
+            else
+            {
+                return Unauthorized(new { message = "Invalid Password" });
+            }   
         }
-        else
+        catch (Exception ex)
         {
-            return Unauthorized(new { message = "Invalid Password" });
+            Console.WriteLine($"An error occurred: {ex.Message}");
+            return StatusCode(500, new { Message = "An error occurred while processing your request." });
         }
+        
     }
 
     private static string GenerateJwtToken(string hosterId)

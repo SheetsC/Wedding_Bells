@@ -33,7 +33,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowSpecificOrigin",
         builder =>
         {
-            builder.WithOrigins("https://weddingbells-api.onrender.com", "http://localhost:3000")
+            builder.WithOrigins("https://weddingbells-api.onrender.com", "http://localhost:3000", "https://wedding-bells.vercel.app")
                    .AllowAnyHeader()
                    .AllowAnyMethod();
         });

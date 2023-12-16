@@ -27,7 +27,6 @@ public class EventController : ControllerBase
             if(MyEvent == null)
             {
                 return Unauthorized(new { message = "Cannot connect to Events" });
-
             }
             else 
             {
