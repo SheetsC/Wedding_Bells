@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 namespace WeddinBells.API.Controller;
 
 [ApiController]
-[Route("[controller]/{eventId}")]
+[Route("[controller]")]
 public class EventController : ControllerBase
 {
     public readonly WeddingBellsContext _context;
@@ -17,8 +17,7 @@ public class EventController : ControllerBase
         _context = context; 
     }
 
-    [HttpGet]
-
+    [HttpGet("{eventId}")]
     public async Task<IActionResult> ShowEventInfo([FromRoute]int eventId)
     {
         try 
@@ -39,4 +38,19 @@ public class EventController : ControllerBase
             return StatusCode(500, "A codebase error occurred while processing.");
         }
     }
+    [HttpGet]
+    public async Task<IActionResult> GetAllEvents()
+    {
+        try
+        {
+            var events = await _context.Events.ToListAsync();
+            return Ok(events);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"An error occurred: {ex.Message}");
+            return StatusCode(500, "A codebase error occurred while processing.");
+        }
+    }
+    
 }

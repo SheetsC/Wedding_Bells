@@ -13,6 +13,7 @@ public class MealPrefController : ControllerBase
     {
         _context = context;
     }
+    
     [HttpPost]
     public async Task<IActionResult> MakeMeal([FromBody] MealPref mealPref)
     {

@@ -1,6 +1,8 @@
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WeddingBells.API.Data_;
+using WeddingBells.API.DTOs;
 using WeddingBells.API.Models;
 
 namespace WeddingBells.API.Controllers;
@@ -12,6 +14,42 @@ public class RSVPController : ControllerBase
     public RSVPController(WeddingBellsContext context)
     {
         _context = context;
+    }
+    [HttpGet("ForEvent/{eventId}")]
+    public async Task<IActionResult> GetRSVPsForEvent(int eventId)
+    {
+        try 
+        {
+            var rsvps = await _context.RSVPs
+                                    .Where(rsvp => rsvp.EventId == eventId)
+                                    .ToListAsync();
+            return Ok(rsvps);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"An error occurred: {ex.Message}");
+            return StatusCode(500, "An error occurred while processing your request.");
+        }
+    }
+    [HttpGet("{rsvp_id}")]
+    public async Task<IActionResult> GetRSVP(int rsvp_id)
+    {
+        try
+        {
+            var rsvp = await _context.RSVPs.FirstOrDefaultAsync(r => r.RSVP_ID == rsvp_id);
+
+            if (rsvp == null)
+            {
+                return NotFound(new { Message = "RSVP not found." });
+            }
+
+            return Ok(rsvp);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"An error occurred: {ex.Message}");
+            return StatusCode(500, new { Message = "An error occurred while processing your request."});
+        }
     }
 
     [HttpPost]
@@ -43,24 +81,60 @@ public class RSVPController : ControllerBase
         }
     }
 
-    [HttpGet("{rsvp_id}")]
-    public async Task<IActionResult> GetRSVP(int rsvp_id)
+    [HttpPatch("{rsvp_id}")]
+    public async Task<IActionResult> EditRSVP (int rsvp_id, [FromBody]RSVPUpdateDto rsvpUpdateDto)
     {
+        if(!ModelState.IsValid)
+        {
+            return BadRequest();
+        }
         try
         {
-            var rsvp = await _context.RSVPs.FindAsync(rsvp_id);
-
+            var rsvp = await _context.RSVPs.FirstOrDefaultAsync(r => r.RSVP_ID == rsvp_id);
             if (rsvp == null)
             {
                 return NotFound(new { Message = "RSVP not found." });
             }
+            rsvp.MealPrefId = rsvpUpdateDto.MealPrefId;
+            rsvp.EventId = rsvpUpdateDto.EventId;
+            rsvp.Attending = rsvpUpdateDto.Attending;
 
-            return Ok(rsvp);
+            _context.RSVPs.Update(rsvp);
+            await _context.SaveChangesAsync();
+            return Ok(new{Message="update complete", rsvp});
+            
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"An error occurred: {ex.Message}");
-            return StatusCode(500, new { Message = "An error occurred while processing your request."});
+            Console.WriteLine($"An Error occured accessing RSVPs: {ex.Message}");
+            return StatusCode(500, new { Message = "An error occurred accessing RSVPs."});
+
+        }
+    }
+    [HttpDelete("{rsvp_id}")]
+    public async Task<IActionResult> DeleteRSVP(int rsvp_id)
+    {
+        if (!ModelState.IsValid)
+        {
+            return BadRequest();
+        }
+        try
+        {
+            var rsvp = await _context.RSVPs.FirstOrDefaultAsync(r => r.RSVP_ID == rsvp_id);
+            if (rsvp == null)
+            {
+                return NotFound(new { Message = "RSVP not found." });
+            }
+            _context.RSVPs.Remove(rsvp);
+            await _context.SaveChangesAsync();
+            return Ok(new {Message = "RSVP deleted successfully.", rsvp});
+
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+            return StatusCode(500, new { Message = "An error occurred accessing RSVPs."});
+
         }
     }
 }
