@@ -22,9 +22,6 @@ namespace WeddingBells.API.Models
 
         public Event Event{get; set;}= null!;
 
-        public int HosterId{get; set;}
-
-        public Hoster Hoster{get; set;}= null!;
 
     }
 }

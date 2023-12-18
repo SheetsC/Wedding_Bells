@@ -1,3 +1,4 @@
+using System.Transactions;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -53,32 +54,57 @@ public class RSVPController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<IActionResult> MakeRSVP([FromBody] RSVP newRSVP)
+    public async Task<IActionResult> MakeRSVP([FromBody] GuestAndRsvpDto newGuestAndRsvp)
     {
         if (!ModelState.IsValid)
         {
             return BadRequest(ModelState);
         }
-
+        using var transaction = await _context.Database.BeginTransactionAsync();
         try
         {
-            var guestMatch = await _context.RSVPs
-                                .FirstOrDefaultAsync(r => r.Guest.EmailAddress == newRSVP.Guest.EmailAddress);
+            var guestRsvpMatch = await _context.RSVPs
+                                .FirstOrDefaultAsync(r => r.Guest.EmailAddress == newGuestAndRsvp.EmailAddress
+                                && r.EventId == newGuestAndRsvp.EventId);
 
-            if (guestMatch != null)
+            if (guestRsvpMatch != null)
             {
                 return StatusCode(409, new { Message = "RSVP already exists. Contact Hoster for assistance." });
             }
+            var newGuest = new Guest
+            {
+                FirstName = newGuestAndRsvp.FirstName,
+                LastName = newGuestAndRsvp.LastName,
+                EmailAddress = newGuestAndRsvp.EmailAddress,
+                PhoneNumber = newGuestAndRsvp.PhoneNumber,
+                AddPlusOne = newGuestAndRsvp.AddPlusOne
 
+            };
+            await _context.Guests.AddAsync(newGuest);
+            await _context.SaveChangesAsync();
+
+            var newRSVP = new RSVP
+            {
+                EventId = newGuestAndRsvp.EventId,
+                Attending = newGuestAndRsvp.Attending,
+                GuestId = newGuest.GuestId,
+                MealPrefId = newGuestAndRsvp.MealPrefId
+            };
             await _context.RSVPs.AddAsync(newRSVP);
             await _context.SaveChangesAsync();
+
+            await transaction.CommitAsync();
+
             return CreatedAtAction(nameof(GetRSVP), new { rsvp_id = newRSVP.RSVP_ID }, newRSVP);
         }
         catch (Exception ex)
         {
+            await transaction.RollbackAsync();
             Console.WriteLine($"An error occurred: {ex.Message}");
             return StatusCode(500, new { Message = "An error occurred while processing your request." });
         }
+
+
     }
 
     [HttpPatch("{rsvp_id}")]
@@ -101,6 +127,7 @@ public class RSVPController : ControllerBase
 
             _context.RSVPs.Update(rsvp);
             await _context.SaveChangesAsync();
+
             return Ok(new{Message="update complete", rsvp});
             
         }
@@ -118,13 +145,16 @@ public class RSVPController : ControllerBase
         {
             return BadRequest();
         }
+
         try
         {
             var rsvp = await _context.RSVPs.FirstOrDefaultAsync(r => r.RSVP_ID == rsvp_id);
+
             if (rsvp == null)
             {
-                return NotFound(new { Message = "RSVP not found." });
+                return NotFound(new { Message = "Trouble accessing the RSVP." });
             }
+
             _context.RSVPs.Remove(rsvp);
             await _context.SaveChangesAsync();
             return Ok(new {Message = "RSVP deleted successfully.", rsvp});
@@ -132,6 +162,7 @@ public class RSVPController : ControllerBase
         }
         catch (Exception ex)
         {
+
             Console.WriteLine(ex.Message);
             return StatusCode(500, new { Message = "An error occurred accessing RSVPs."});
 

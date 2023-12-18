@@ -30,9 +30,6 @@ namespace WeddingBells.API.Models
         public string EmailAddress {get; set;}= null!;
 
 
-        public bool Attending {get; set;}
-
-
         public bool AddPlusOne {get; set;}
 
 
