@@ -22,7 +22,7 @@ namespace WeddingBells.API.Models
 
 
         [RegularExpression(RegexPatterns.PhoneNumberPattern, ErrorMessage = "Invalid Phone Number")]
-        public string[] PhoneNumber {get; set;}= null!;
+        public string PhoneNumber {get; set;}= null!;
 
 
 
@@ -33,7 +33,7 @@ namespace WeddingBells.API.Models
         public bool AddPlusOne {get; set;}
 
 
-        public List<RSVP> RSVPs {get; set;}= null!;
+        public List<RSVP>? RSVPs {get; set;}
 
 
     }   

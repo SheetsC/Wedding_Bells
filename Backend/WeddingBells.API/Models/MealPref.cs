@@ -17,7 +17,7 @@ namespace WeddingBells.API.Models
         )]
         public string CourseName {get; set;}= null!;
 
-        public bool Vegitarian {get; set;}
+        public bool Vegetarian {get; set;}
 
         public bool Beef{get; set;}
 
@@ -25,7 +25,7 @@ namespace WeddingBells.API.Models
 
         public bool Fish {get; set;}
 
-        public List<RSVP> RSVPs{get; set;}= null!;
+        public List<RSVP>? RSVPs{get; set;}
 
 
 

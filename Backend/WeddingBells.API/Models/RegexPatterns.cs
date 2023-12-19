@@ -7,7 +7,7 @@ namespace WeddingBells.API.Models
         public const string PhoneNumberPattern = @"^\(?([0-9]{3})\)?[- . ]?([0-9]{3})[-. ]?([0-9]{4})$";
         public const string EmailPattern = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
 
-        public const string NamePattern= @"^[a-zA-z ]{1,10}$";
+        public const string NamePattern= @"^[a-zA-z ]{1,20}$";
 
         public const string PasswordPattern = @"^(?=.*[A-Z])(?=.*\d).{8,}$";
 

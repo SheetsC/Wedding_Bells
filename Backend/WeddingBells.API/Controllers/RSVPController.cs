@@ -63,9 +63,11 @@ public class RSVPController : ControllerBase
         using var transaction = await _context.Database.BeginTransactionAsync();
         try
         {
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
             var guestRsvpMatch = await _context.RSVPs
                                 .FirstOrDefaultAsync(r => r.Guest.EmailAddress == newGuestAndRsvp.EmailAddress
                                 && r.EventId == newGuestAndRsvp.EventId);
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
 
             if (guestRsvpMatch != null)
             {
@@ -96,6 +98,7 @@ public class RSVPController : ControllerBase
             await transaction.CommitAsync();
 
             return CreatedAtAction(nameof(GetRSVP), new { rsvp_id = newRSVP.RSVP_ID }, newRSVP);
+            //return StatusCode(202, new{Message = "Success", newRSVP});
         }
         catch (Exception ex)
         {

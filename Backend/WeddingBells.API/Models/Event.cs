@@ -15,7 +15,6 @@ namespace WeddingBells.API.Models
 
         public string Title{get; set;} = null!;
 
-
         public string Location{get; set;}= null!;
 
         public string Date{get; set;} = null!; 
@@ -23,13 +22,8 @@ namespace WeddingBells.API.Models
         public string Description{get;set;} = null!;
         public int HosterId{get;set;}
 
-        public Hoster Hoster{get; set;}= null!;
-
-
+        public Hoster? Hoster{get; set;}
 
         public  List<RSVP>? RSVPs{get; set;}
-
-
-
     }
 }
