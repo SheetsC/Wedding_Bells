@@ -55,6 +55,9 @@ interface EventData {
   date: string;
   description: string;
 }
+interface EventPageParams{
+  eventId: number;
+}
 
 const Events: NextPage<{ params: EventPageParams }> = ({ params }) => {
   const eventId = params.eventId;
