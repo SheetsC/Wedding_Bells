@@ -11,7 +11,8 @@ namespace WeddinBells.API.Controller;
 [Route("[controller]")]
 public class EventController : ControllerBase
 {
-    public readonly WeddingBellsContext _context;
+    private readonly WeddingBellsContext _context;
+
     public EventController(WeddingBellsContext context) 
     {
         _context = context; 
@@ -22,14 +23,18 @@ public class EventController : ControllerBase
     {
         try 
         {
-            var MyEvent = await _context.Events.FirstOrDefaultAsync(e => e.EventId == eventId);
-            if(MyEvent == null)
+            var myEvent = await _context.Events
+                .Where(e => e.EventId == eventId)
+                .Select(e => new { e.EventId, e.Title, e.Date, e.Description })
+                .FirstOrDefaultAsync();
+
+            if(myEvent == null)
             {
-                return Unauthorized(new { message = "Cannot connect to Events" });
+                return NotFound(new { message = "Event not found" });
             }
             else 
             {
-                return Ok(new { message = MyEvent?.Title,  MyEvent});
+                return Ok(myEvent);
             }
         }
         catch (Exception ex)
@@ -38,19 +43,4 @@ public class EventController : ControllerBase
             return StatusCode(500, "A codebase error occurred while processing.");
         }
     }
-    [HttpGet]
-    public async Task<IActionResult> GetAllEvents()
-    {
-        try
-        {
-            var events = await _context.Events.ToListAsync();
-            return Ok(events);
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine($"An error occurred: {ex.Message}");
-            return StatusCode(500, "A codebase error occurred while processing.");
-        }
-    }
-    
 }

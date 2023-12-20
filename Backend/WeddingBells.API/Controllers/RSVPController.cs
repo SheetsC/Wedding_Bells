@@ -67,7 +67,6 @@ public class RSVPController : ControllerBase
             var guestRsvpMatch = await _context.RSVPs
                                 .FirstOrDefaultAsync(r => r.Guest.EmailAddress == newGuestAndRsvp.EmailAddress
                                 && r.EventId == newGuestAndRsvp.EventId);
-#pragma warning restore CS8602 // Dereference of a possibly null reference.
 
             if (guestRsvpMatch != null)
             {
@@ -160,7 +159,7 @@ public class RSVPController : ControllerBase
 
             _context.RSVPs.Remove(rsvp);
             await _context.SaveChangesAsync();
-            return Ok(new {Message = "RSVP deleted successfully.", rsvp});
+            return Ok(new {Message = "RSVP deleted successfully."});
 
         }
         catch (Exception ex)

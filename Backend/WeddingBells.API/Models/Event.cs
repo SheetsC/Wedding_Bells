@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 
 namespace WeddingBells.API.Models
@@ -21,7 +22,8 @@ namespace WeddingBells.API.Models
 
         public string Description{get;set;} = null!;
         public int HosterId{get;set;}
-
+        
+        [JsonIgnore]
         public Hoster? Hoster{get; set;}
 
         public  List<RSVP>? RSVPs{get; set;}
