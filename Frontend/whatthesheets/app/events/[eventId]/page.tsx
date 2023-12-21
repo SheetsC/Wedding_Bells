@@ -1,7 +1,7 @@
 "use client";
 import { NextPage } from 'next';
 import { useEffect, useState } from 'react';
-
+import { RsvpForm } from './rsvpForm';
 // Assuming this interface matches the structure of data returned from your API
 interface EventData {
   
@@ -25,9 +25,9 @@ const Events: NextPage<{ params: EventPageParams }> = ({ params }) => {
 
   useEffect(() => {
     if (eventId) {
-      fetch(`http://localhost:5021/event/${eventId}`)
+      //fetch(`http://localhost:5021/event/${eventId}`)
 
-      //fetch(`https://weddingbells-api.onrender.com/event/${eventId}`)
+      fetch(`https://weddingbells-api.onrender.com/event/${eventId}`)
         .then(response => response.json())
         .then(data => {setEventData(data); console.log(data)})
         .catch(error => console.error('Error fetching event:', error));
@@ -40,6 +40,8 @@ const Events: NextPage<{ params: EventPageParams }> = ({ params }) => {
         <div>
           <h1>Event ID: {eventData.title}</h1>
           {/* Additional content based on eventData */}
+          <RsvpForm eventId={Number(eventId)} />
+
         </div>
       ) : (
         <div>Loading event data...</div>
