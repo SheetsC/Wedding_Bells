@@ -47,12 +47,17 @@ export function RsvpForm({ eventId}: RsvpFormProps) {
             fetch(`https://weddingbells-api.onrender.com/rsvp`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ newGuestAndRSVP}),
+                body: JSON.stringify( newGuestAndRSVP),
             })
             .then((r) => r.json())
             .then((data) => {
                 console.warn(data); 
                 resetForm()
+            })
+            .catch(error => {
+                error.response.json().then((body: any) => {
+                    console.error("Server response:", body);
+                });
             });
         },
     });

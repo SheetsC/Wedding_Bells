@@ -78,7 +78,6 @@ public class RSVPController : ControllerBase
                 LastName = newGuestAndRsvp.LastName,
                 EmailAddress = newGuestAndRsvp.EmailAddress,
                 PhoneNumber = newGuestAndRsvp.PhoneNumber,
-                AddPlusOne = newGuestAndRsvp.AddPlusOne
 
             };
             await _context.Guests.AddAsync(newGuest);
@@ -89,7 +88,9 @@ public class RSVPController : ControllerBase
                 EventId = newGuestAndRsvp.EventId,
                 Attending = newGuestAndRsvp.Attending,
                 GuestId = newGuest.GuestId,
-                MealPrefId = newGuestAndRsvp.MealPrefId
+                MealPrefId = newGuestAndRsvp.MealPrefId,
+                AddPlusOne = newGuestAndRsvp.AddPlusOne
+
             };
             await _context.RSVPs.AddAsync(newRSVP);
             await _context.SaveChangesAsync();

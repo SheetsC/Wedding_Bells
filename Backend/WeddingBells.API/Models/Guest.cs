@@ -29,10 +29,6 @@ namespace WeddingBells.API.Models
         [RegularExpression(RegexPatterns.EmailPattern, ErrorMessage = "Invalid Email Address")]
         public string EmailAddress {get; set;}= null!;
 
-
-        public bool AddPlusOne {get; set;}
-
-
         public List<RSVP>? RSVPs {get; set;}
 
 

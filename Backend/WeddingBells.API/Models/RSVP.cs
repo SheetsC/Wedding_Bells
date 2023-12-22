@@ -24,5 +24,8 @@ namespace WeddingBells.API.Models
 
         [JsonIgnore]
         public Event? Event{get; set;}
+
+        public bool AddPlusOne {get; set;}
+
     }
 }
