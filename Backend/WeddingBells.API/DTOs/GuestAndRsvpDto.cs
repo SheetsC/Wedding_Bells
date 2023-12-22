@@ -7,7 +7,7 @@ public class GuestAndRsvpDto
     public string LastName { get; set; } = null!;
     public string PhoneNumber { get; set; } = null!;
     public string EmailAddress { get; set; } = null!;
-    public bool AddPlusOne { get; set; }
+    
 
 
     // RSVP info
@@ -15,5 +15,7 @@ public class GuestAndRsvpDto
     public bool Attending{get;set;}
     public int GuestId {get; set;}
     public int MealPrefId {get; set;}
+    public bool AddPlusOne { get; set; }
+
 
 }

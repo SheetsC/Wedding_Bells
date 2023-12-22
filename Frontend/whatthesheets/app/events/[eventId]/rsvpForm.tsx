@@ -37,7 +37,7 @@ export function RsvpForm({ eventId}: RsvpFormProps) {
                     emailAddress: values.emailAddress,
                     phoneNumber: values.phoneNumber,
                     attending: Boolean(values.attending),
-                    mealPrefId: Number(values.mealPrefId), 
+                    mealPrefId: Number(1), 
                     eventId: eventId, 
                     addPlusOne: Boolean(values.addPlusOne) 
                 };
@@ -128,11 +128,17 @@ export function RsvpForm({ eventId}: RsvpFormProps) {
                     type="radio"
                     name="attending"
                     id="attending"
-                    value={formik.values.attending}
+                    value="true"
+                    checked={formik.values.attending === 'true'}
+                    onChange={formik.handleChange}                    
+                /> Yes
+                <input
+                    type="radio"
+                    name="attending"
+                    value="false"
+                    checked={formik.values.attending === 'false'}
                     onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
-                    className={`block w-full rounded-md border-0 font-sanspx-3.5 py-2 text-slate-900 shadow-sm ring-1 ring-inset ${formik.touched.attending && formik.errors.attending ? "ring-red-500" : "ring-slate-300"} focus:ring-2 focus:ring-inset focus:ring-amber-400 sm:text-sm sm:leading-6`}
-                />
+                /> No
                 {formik.touched.attending && formik.errors.attending && (
                     <div className="text-red-500">{formik.errors.attending}</div>
                 )}
@@ -143,11 +149,11 @@ export function RsvpForm({ eventId}: RsvpFormProps) {
                     type="radio"
                     name="mealPref"
                     id="mealPref"
-                    value={formik.values.mealPrefId}
+                    value={Number(1)}
+                    checked={formik.values.mealPrefId === '1'}
                     onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
-                    className={`block w-full rounded-md border-0 font-sanspx-3.5 py-2 text-slate-900 shadow-sm ring-1 ring-inset ${formik.touched.mealPrefId && formik.errors.mealPrefId ? "ring-red-500" : "ring-slate-300"} focus:ring-2 focus:ring-inset focus:ring-amber-400 sm:text-sm sm:leading-6`}
-                />
+                    //className={`block w-full rounded-md border-0 font-sanspx-3.5 py-2 text-slate-900 shadow-sm ring-1 ring-inset ${formik.touched.mealPrefId && formik.errors.mealPrefId ? "ring-red-500" : "ring-slate-300"} focus:ring-2 focus:ring-inset focus:ring-amber-400 sm:text-sm sm:leading-6`}
+                /> Chicken Tacos
                 {formik.touched.mealPrefId && formik.errors.mealPrefId && (
                     <div className="text-red-500">{formik.errors.mealPrefId}</div>
                 )}
@@ -159,11 +165,18 @@ export function RsvpForm({ eventId}: RsvpFormProps) {
                     type="radio"
                     name="addPlusOne"
                     id="addPlusOne"
-                    value={formik.values.addPlusOne}
+                    value="true"
+                    checked={formik.values.addPlusOne === 'true'}
+                    onChange={formik.handleChange}                    
+                /> Yes
+                <input
+                    type="radio"
+                    name="addPlusOne"
+                    id = "addPlusOne"
+                    value="false"
+                    checked={formik.values.addPlusOne === 'false'}
                     onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
-                    className={`block w-full rounded-md border-0 font-sanspx-3.5 py-2 text-slate-900 shadow-sm ring-1 ring-inset ${formik.touched.addPlusOne && formik.errors.addPlusOne ? "ring-red-500" : "ring-slate-300"} focus:ring-2 focus:ring-inset focus:ring-amber-400 sm:text-sm sm:leading-6`}
-                />
+                /> No
                 {formik.touched.addPlusOne && formik.errors.addPlusOne && (
                     <div className="text-red-500">{formik.errors.addPlusOne}</div>
                 )}
