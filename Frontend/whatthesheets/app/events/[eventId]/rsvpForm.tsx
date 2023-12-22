@@ -42,6 +42,7 @@ export function RsvpForm({ eventId}: RsvpFormProps) {
                     addPlusOne: Boolean(values.addPlusOne) 
                 };
                 
+            console.log("Sending Form values:", newGuestAndRSVP);
 
             fetch(`https://weddingbells-api.onrender.com/rsvp`, {
                 method: 'POST',
@@ -185,6 +186,6 @@ export function RsvpForm({ eventId}: RsvpFormProps) {
             <button type="submit" className="block w-full font-sans rounded-md bg-yellow-500 px-3.5 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-slate-500">Add</button>
             </form>
         </div>
-        </div>
+    </div>
     )
 }
