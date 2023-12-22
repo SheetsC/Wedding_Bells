@@ -59,7 +59,7 @@ export function RsvpForm({ eventId}: RsvpFormProps) {
     return (
     <div className="mx-auto font-sans text-center justify-between gap-x-6 p-6 lg:px-8">
         <div className="mx-10 mb-8 border-none shadow-sm p-6">
-        <h2 className="p-6 my-3 text-yellow-500 text-4xl font-bold">Add a Project</h2>
+        <h2 className="p-6 my-3 text-yellow-500 text-4xl font-bold">Make RSVP</h2>
         <form onSubmit={formik.handleSubmit} className="mx-auto mt-6 max-w-lg grid grid-cols-2 gap-4">
             <div>
                 <label htmlFor="fristName" className="block text-sm font-semibold font-sans leading-6  text-yellow-500"> First Name</label>
