@@ -1,12 +1,17 @@
 
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
+import {useState} from 'react'
+import {Dialog} from '@headlessui/react';
+
+
 
 interface RsvpFormProps {
     eventId: number;
+    
   }
 export function RsvpForm({ eventId}: RsvpFormProps) {
-
+    
     const formSchema = Yup.object().shape({
         emailAddress: Yup.string().required('Required'),
         phoneNumber: Yup.string(),
@@ -17,7 +22,9 @@ export function RsvpForm({ eventId}: RsvpFormProps) {
         addPlusOne: Yup.boolean().required('Required')
 
     });
-
+    const [modalOpen, setModalOpen] = useState(false);
+    const [rsvpId , setRsvpId] = useState(null);
+    const [submitError, setSubmitError] = useState(null);
     const formik = useFormik({
         initialValues: {
             emailAddress:'',
@@ -51,11 +58,18 @@ export function RsvpForm({ eventId}: RsvpFormProps) {
             })
             .then((r) => r.json())
             .then((data) => {
-                console.warn(data); 
+                console.warn(data)
                 resetForm()
+                setRsvpId(data.rsvP_ID)
+                setModalOpen(true);
+                setSubmitError(null);
             })
             .catch(error => {
+                
+                setModalOpen(true);
+                setRsvpId(null);
                 error.response.json().then((body: any) => {
+                    setSubmitError(error.message);
                     console.error("Server response:", body);
                 });
             });
@@ -65,131 +79,167 @@ export function RsvpForm({ eventId}: RsvpFormProps) {
     return (
     <div className="mx-auto font-sans text-center justify-between gap-x-6 p-6 lg:px-8">
         <div className="mx-10 mb-8 border-none shadow-sm p-6">
-        <h2 className="p-6 my-3 text-yellow-500 text-4xl font-bold">Make RSVP</h2>
-        <form onSubmit={formik.handleSubmit} className="mx-auto mt-6 max-w-lg grid grid-cols-2 gap-4">
-            <div>
-                <label htmlFor="fristName" className="block text-sm font-semibold font-sans leading-6  text-yellow-500"> First Name</label>
-                <input
-                    type="text"
-                    name="firstName"
-                    id="firstName"
-                    value={formik.values.firstName}
-                    onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
-                    className={`block w-full rounded-md border-0 px-3.5 py-2 text-slate-900 shadow-sm ring-1 ring-inset ${formik.touched.firstName && formik.errors.firstName ? "ring-red-500" : "ring-slate-300"} focus:ring-2 focus:ring-inset focus:ring-amber-400 sm:text-sm sm:leading-6`}
-                />
-                {formik.touched.firstName && formik.errors.firstName && (
-                    <div className="text-red-500">{formik.errors.firstName}</div>
-                )}
-            </div>
-            <div>
-                <label htmlFor="lastName" className="block text-sm font-sans leading-6  text-yellow-500">Last Name</label>
-                <input
-                    type="text"
-                    name="lastName"
-                    id="lastName"
-                    value={formik.values.lastName}
-                    onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
-                    className={`block w-full rounded-md border-0 font-sanspx-3.5 py-2 text-slate-900 shadow-sm ring-1 ring-inset ${formik.touched.lastName && formik.errors.lastName ? "ring-red-500" : "ring-slate-300"} focus:ring-2 focus:ring-inset focus:ring-amber-400 sm:text-sm sm:leading-6`}
-                />
-                {formik.touched.lastName && formik.errors.lastName && (
-                    <div className="text-red-500">{formik.errors.lastName}</div>
-                )}
-            </div>
-            <div>
-                <label htmlFor="emailAddress" className="block text-sm font-sans leading-6  text-yellow-500">Email Address</label>
-                <input
-                    type="text"
-                    name="emailAddress"
-                    id="emailAddress"
-                    value={formik.values.emailAddress}
-                    onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
-                    className={`block w-full rounded-md border-0 font-sanspx-3.5 py-2 text-slate-900 shadow-sm ring-1 ring-inset ${formik.touched.emailAddress && formik.errors.emailAddress
-                        ? "ring-red-500" : "ring-slate-300"} focus:ring-2 focus:ring-inset focus:ring-amber-400 sm:text-sm sm:leading-6`}
-                />
-                {formik.touched.emailAddress && formik.errors.emailAddress && (
-                    <div className="text-red-500">{formik.errors.emailAddress}</div>
-                )}
-            </div>
-            <div>
-                <label htmlFor="phoneNumber" className="block text-sm font-semibold font-sans leading-6  text-yellow-500">Phone Number</label>
-                <input
-                    type="text"
-                    name="phoneNumber"
-                    id="phoneNumber"
-                    value={formik.values.phoneNumber}
-                    onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
-                    className={`block w-full rounded-md border-0 px-3.5 py-2 text-slate-900 shadow-sm ring-1 ring-inset ${formik.touched.phoneNumber && formik.errors.phoneNumber ? "ring-red-500" : "ring-slate-300"} focus:ring-2 focus:ring-inset focus:ring-amber-400 sm:text-sm sm:leading-6`}
-                />
-                {formik.touched.phoneNumber && formik.errors.phoneNumber && (
-                    <div className="text-red-500">{formik.errors.phoneNumber}</div>
-                )}
-            </div>
-            <div>
-                <label htmlFor="attending" className="block text-sm font-sans leading-6  text-yellow-500">Attending:</label>
-                <input
-                    type="radio"
-                    name="attending"
-                    id="attending"
-                    value="true"
-                    checked={formik.values.attending === 'true'}
-                    onChange={formik.handleChange}                    
-                /> Yes
-                <input
-                    type="radio"
-                    name="attending"
-                    value="false"
-                    checked={formik.values.attending === 'false'}
-                    onChange={formik.handleChange}
-                /> No
-                {formik.touched.attending && formik.errors.attending && (
-                    <div className="text-red-500">{formik.errors.attending}</div>
-                )}
-            </div>
-            <div>
-                <label htmlFor="mealPrefId" className="block text-sm font-sans leading-6  text-yellow-500">Meal Pref:</label>
-                <input
-                    type="radio"
-                    name="mealPref"
-                    id="mealPref"
-                    value={Number(1)}
-                    checked={formik.values.mealPrefId === '1'}
-                    onChange={formik.handleChange}
-                    //className={`block w-full rounded-md border-0 font-sanspx-3.5 py-2 text-slate-900 shadow-sm ring-1 ring-inset ${formik.touched.mealPrefId && formik.errors.mealPrefId ? "ring-red-500" : "ring-slate-300"} focus:ring-2 focus:ring-inset focus:ring-amber-400 sm:text-sm sm:leading-6`}
-                /> Chicken Tacos
-                {formik.touched.mealPrefId && formik.errors.mealPrefId && (
-                    <div className="text-red-500">{formik.errors.mealPrefId}</div>
-                )}
-                <h1>Host will contact for dinning options.</h1>
-            </div>
-            <div>
-                <label htmlFor="addPlusOne" className="block text-sm font-sans leading-6  text-yellow-500">Add Plus-One:</label>
-                <input
-                    type="radio"
-                    name="addPlusOne"
-                    id="addPlusOne"
-                    value="true"
-                    checked={formik.values.addPlusOne === 'true'}
-                    onChange={formik.handleChange}                    
-                /> Yes
-                <input
-                    type="radio"
-                    name="addPlusOne"
-                    id = "addPlusOne"
-                    value="false"
-                    checked={formik.values.addPlusOne === 'false'}
-                    onChange={formik.handleChange}
-                /> No
-                {formik.touched.addPlusOne && formik.errors.addPlusOne && (
-                    <div className="text-red-500">{formik.errors.addPlusOne}</div>
-                )}
-            </div>
-            
-            <button type="submit" className="block w-full font-sans rounded-md bg-yellow-500 px-3.5 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-slate-500">Add</button>
+            <h2 className="p-6 my-3 text-yellow-500 text-4xl font-bold">Make RSVP</h2>
+            <form onSubmit={formik.handleSubmit} className="mx-auto mt-6 max-w-lg grid grid-cols-2 gap-4">
+                <div>
+                    <label htmlFor="fristName" className="block text-sm font-semibold font-sans leading-6  text-yellow-500"> First Name</label>
+                    <input
+                        type="text"
+                        name="firstName"
+                        id="firstName"
+                        value={formik.values.firstName}
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        className={`block w-full rounded-md border-0 px-3.5 py-2 text-slate-900 shadow-sm ring-1 ring-inset ${formik.touched.firstName && formik.errors.firstName ? "ring-red-500" : "ring-slate-300"} focus:ring-2 focus:ring-inset focus:ring-amber-400 sm:text-sm sm:leading-6`}
+                    />
+                    {formik.touched.firstName && formik.errors.firstName && (
+                        <div className="text-red-500">{formik.errors.firstName}</div>
+                    )}
+                </div>
+                <div>
+                    <label htmlFor="lastName" className="block text-sm font-sans leading-6  text-yellow-500">Last Name</label>
+                    <input
+                        type="text"
+                        name="lastName"
+                        id="lastName"
+                        value={formik.values.lastName}
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        className={`block w-full rounded-md border-0 font-sanspx-3.5 py-2 text-slate-900 shadow-sm ring-1 ring-inset ${formik.touched.lastName && formik.errors.lastName ? "ring-red-500" : "ring-slate-300"} focus:ring-2 focus:ring-inset focus:ring-amber-400 sm:text-sm sm:leading-6`}
+                    />
+                    {formik.touched.lastName && formik.errors.lastName && (
+                        <div className="text-red-500">{formik.errors.lastName}</div>
+                    )}
+                </div>
+                <div>
+                    <label htmlFor="emailAddress" className="block text-sm font-sans leading-6  text-yellow-500">Email Address</label>
+                    <input
+                        type="text"
+                        name="emailAddress"
+                        id="emailAddress"
+                        value={formik.values.emailAddress}
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        className={`block w-full rounded-md border-0 font-sanspx-3.5 py-2 text-slate-900 shadow-sm ring-1 ring-inset ${formik.touched.emailAddress && formik.errors.emailAddress
+                            ? "ring-red-500" : "ring-slate-300"} focus:ring-2 focus:ring-inset focus:ring-amber-400 sm:text-sm sm:leading-6`}
+                    />
+                    {formik.touched.emailAddress && formik.errors.emailAddress && (
+                        <div className="text-red-500">{formik.errors.emailAddress}</div>
+                    )}
+                </div>
+                <div>
+                    <label htmlFor="phoneNumber" className="block text-sm font-semibold font-sans leading-6  text-yellow-500">Phone Number</label>
+                    <input
+                        type="text"
+                        name="phoneNumber"
+                        id="phoneNumber"
+                        value={formik.values.phoneNumber}
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        className={`block w-full rounded-md border-0 px-3.5 py-2 text-slate-900 shadow-sm ring-1 ring-inset ${formik.touched.phoneNumber && formik.errors.phoneNumber ? "ring-red-500" : "ring-slate-300"} focus:ring-2 focus:ring-inset focus:ring-amber-400 sm:text-sm sm:leading-6`}
+                    />
+                    {formik.touched.phoneNumber && formik.errors.phoneNumber && (
+                        <div className="text-red-500">{formik.errors.phoneNumber}</div>
+                    )}
+                </div>
+                <div>
+                    <label htmlFor="attending" className="block text-sm font-sans leading-6  text-yellow-500">Attending:</label>
+                    <input
+                        type="radio"
+                        name="attending"
+                        id="attending"
+                        value="true"
+                        checked={formik.values.attending === 'true'}
+                        onChange={formik.handleChange}                    
+                    /> Yes
+                    <input
+                        type="radio"
+                        name="attending"
+                        value="false"
+                        checked={formik.values.attending === 'false'}
+                        onChange={formik.handleChange}
+                    /> No
+                    {formik.touched.attending && formik.errors.attending && (
+                        <div className="text-red-500">{formik.errors.attending}</div>
+                    )}
+                </div>
+                <div>
+                    <label htmlFor="mealPrefId" className="block text-sm font-sans leading-6  text-yellow-500">Meal Pref:</label>
+                    <input
+                        type="radio"
+                        name="mealPref"
+                        id="mealPref"
+                        value={Number(1)}
+                        checked={formik.values.mealPrefId === '1'}
+                        onChange={formik.handleChange}
+                        //className={`block w-full rounded-md border-0 font-sanspx-3.5 py-2 text-slate-900 shadow-sm ring-1 ring-inset ${formik.touched.mealPrefId && formik.errors.mealPrefId ? "ring-red-500" : "ring-slate-300"} focus:ring-2 focus:ring-inset focus:ring-amber-400 sm:text-sm sm:leading-6`}
+                    /> Chicken Tacos
+                    {formik.touched.mealPrefId && formik.errors.mealPrefId && (
+                        <div className="text-red-500">{formik.errors.mealPrefId}</div>
+                    )}
+                    <h1>Host will contact for dinning options.</h1>
+                </div>
+                <div>
+                    <label htmlFor="addPlusOne" className="block text-sm font-sans leading-6  text-yellow-500">Add Plus-One:</label>
+                    <input
+                        type="radio"
+                        name="addPlusOne"
+                        id="addPlusOne"
+                        value="true"
+                        checked={formik.values.addPlusOne === 'true'}
+                        onChange={formik.handleChange}                    
+                    /> Yes
+                    <input
+                        type="radio"
+                        name="addPlusOne"
+                        id = "addPlusOne"
+                        value="false"
+                        checked={formik.values.addPlusOne === 'false'}
+                        onChange={formik.handleChange}
+                    /> No
+                    {formik.touched.addPlusOne && formik.errors.addPlusOne && (
+                        <div className="text-red-500">{formik.errors.addPlusOne}</div>
+                    )}
+                </div>
+                
+                <button type="submit" className="block w-full font-sans rounded-md bg-yellow-500 px-3.5 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-slate-500">Add</button>
             </form>
+            <Dialog open={modalOpen} onClose={() => setModalOpen(false)}>
+                <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
+
+                <div className="fixed inset-0 z-10 overflow-y-auto">
+                    <div className="flex min-h-full items-center justify-center p-4 text-center">
+                        <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
+                            <Dialog.Title as="h3" className="text-lg font-medium leading-6 text-gray-900">
+                                RSVP Submission
+                            </Dialog.Title>
+                            <div className="mt-2">
+                                {rsvpId ? (
+                                    <p className="text-sm text-gray-500">
+                                        RSVP submitted successfully! Your RSVP ID is {rsvpId}.
+                                        Please have this ID if you need to contact Host to edit the reservation.
+                                    </p>
+                                ) : (
+                                    <p className="text-sm text-gray-500">
+                                        Failed to submit RSVP: {submitError}.
+                                        Please contact Site Administrator.
+                                    </p>
+                                )}
+                            </div>
+                            <div className="mt-4">
+                                <button
+                                    type="button"
+                                    className="inline-flex justify-center rounded-md border border-transparent bg-blue-500 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                                    onClick={() => setModalOpen(false)}
+                                >
+                                    Close
+                                </button>
+                            </div>
+                        </Dialog.Panel>
+                    </div>
+                </div>
+            </Dialog>
+            
         </div>
     </div>
     )
