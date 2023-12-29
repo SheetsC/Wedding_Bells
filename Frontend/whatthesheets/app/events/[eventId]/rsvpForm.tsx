@@ -31,9 +31,9 @@ export function RsvpForm({ eventId}: RsvpFormProps) {
             phoneNumber:'',
             firstName:'',
             lastName:'',
-            attending:'',
+            attending:false,
             mealPrefId:'',
-            addPlusOne:'',
+            addPlusOne:false,
             plusOneName:''
         },
         validationSchema: formSchema,
@@ -158,14 +158,14 @@ export function RsvpForm({ eventId}: RsvpFormProps) {
                         name="attending"
                         id="attending"
                         value="true"
-                        checked={formik.values.attending === 'true'}
+                        checked={formik.values.attending === true}
                         onChange={formik.handleChange}                    
                     /> Yes
                     <input
                         type="radio"
                         name="attending"
                         value="false"
-                        checked={formik.values.attending === 'false'}
+                        checked={formik.values.attending === false}
                         onChange={formik.handleChange}
                     /> No
                     {formik.touched.attending && formik.errors.attending && (
@@ -195,7 +195,7 @@ export function RsvpForm({ eventId}: RsvpFormProps) {
                         name="addPlusOne"
                         id="addPlusOne"
                         value="true"
-                        checked={formik.values.addPlusOne === 'true'}
+                        checked={formik.values.addPlusOne === true}
                         onChange={handleAddPlusOneChange}                    
                     /> Yes
                     <input
@@ -203,10 +203,10 @@ export function RsvpForm({ eventId}: RsvpFormProps) {
                         name="addPlusOne"
                         id = "addPlusOne"
                         value="false"
-                        checked={formik.values.addPlusOne === 'false'}
+                        checked={formik.values.addPlusOne === false}
                         onChange={handleAddPlusOneChange}
                     /> No
-                    {formik.values.addPlusOne === 'true' && (
+                    {formik.values.addPlusOne === true && (
                     <div>
                         <label htmlFor="plusOneName" className="block text-sm font-sans leading-6 text-yellow-500">
                             Plus-One Name:
