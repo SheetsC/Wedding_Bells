@@ -35,7 +35,7 @@ export function RsvpForm({ eventId}: RsvpFormProps) {
             attending:false,
             mealPrefId:'',
             addPlusOne:false,
-            plusOneName:''
+            plusOneName:'none'
         },
         validationSchema: formSchema,
             onSubmit: (values, { resetForm }) => {
