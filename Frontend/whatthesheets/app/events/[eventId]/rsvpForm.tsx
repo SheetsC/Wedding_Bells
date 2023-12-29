@@ -17,8 +17,9 @@ export function RsvpForm({ eventId}: RsvpFormProps) {
         attending: Yup.boolean().required('Required'),
         mealPrefId: Yup.number(),
         addPlusOne: Yup.boolean().required('Required'),
-        plusOneName: Yup.string().when('addPlusOne', (addPlusOne, schema) => {
-            return addPlusOne ? schema.required('Please enter the name of your plus-one.') : schema.notRequired();
+        plusOneName: Yup.string().when('addPlusOne', (addPlusOneValue , schema) => {
+            console.log("addPlusOneValue in validation:", addPlusOneValue);
+            return addPlusOneValue ? schema.required('Please enter the name of your plus-one.') : schema.notRequired();
         })
 
     });
