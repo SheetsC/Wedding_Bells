@@ -15,7 +15,7 @@ export function RsvpForm({ eventId}: RsvpFormProps) {
         firstName: Yup.string().required('Required'),
         lastName: Yup.string().required('Required'),
         attending: Yup.boolean().required('Required'),
-        mealPref: Yup.number(),
+        mealPrefId: Yup.number(),
         addPlusOne: Yup.boolean().required('Required'),
         plusOneName: Yup.string().when('addPlusOne', (addPlusOneValue, schema) => {
             return addPlusOneValue ? schema.required('Please enter the name of your plus-one.') : schema.notRequired();
@@ -178,8 +178,8 @@ export function RsvpForm({ eventId}: RsvpFormProps) {
                     <label htmlFor="mealPrefId" className="block text-sm font-sans leading-6  text-yellow-500">Meal Pref:</label>
                     <input
                         type="radio"
-                        name="mealPref"
-                        id="mealPref"
+                        name="mealPrefId"
+                        id="mealPrefId"
                         value={Number(1)}
                         checked={formik.values.mealPrefId === '1'}
                         onChange={formik.handleChange}
