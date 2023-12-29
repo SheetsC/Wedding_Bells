@@ -79,9 +79,10 @@ export function RsvpForm({ eventId}: RsvpFormProps) {
     });
 
     const handleAddPlusOneChange = (e: { target: { value: string; }; }) => {
-        formik.setFieldValue("addPlusOne", e.target.value);
-        if (e.target.value === "false") {
-            formik.setFieldValue("plusOneName", ""); 
+        const isAddPlusOne = e.target.value === "true";
+        formik.setFieldValue("addPlusOne", isAddPlusOne);
+        if (!isAddPlusOne) {
+            formik.setFieldValue("plusOneName", "");
         }
     };
 
