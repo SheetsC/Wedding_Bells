@@ -165,6 +165,7 @@ export function RsvpForm({ eventId}: RsvpFormProps) {
                     <input
                         type="radio"
                         name="attending"
+                        id="attending"
                         value="false"
                         checked={formik.values.attending === false}
                         onChange={() => formik.setFieldValue('attending', false)}
