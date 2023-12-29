@@ -1,10 +1,7 @@
-
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import {useState} from 'react'
 import {Dialog} from '@headlessui/react';
-
-
 
 interface RsvpFormProps {
     eventId: number;
@@ -19,7 +16,10 @@ export function RsvpForm({ eventId}: RsvpFormProps) {
         lastName: Yup.string().required('Required'),
         attending: Yup.boolean().required('Required'),
         mealPref: Yup.number(),
-        addPlusOne: Yup.boolean().required('Required')
+        addPlusOne: Yup.boolean().required('Required'),
+        plusOneName: Yup.string().when('addPlusOne', (addPlusOneValue, schema) => {
+            return addPlusOneValue ? schema.required('Please enter the name of your plus-one.') : schema.notRequired();
+        })
 
     });
     const [modalOpen, setModalOpen] = useState(false);
@@ -33,7 +33,8 @@ export function RsvpForm({ eventId}: RsvpFormProps) {
             lastName:'',
             attending:'',
             mealPrefId:'',
-            addPlusOne:''
+            addPlusOne:'',
+            plusOneName:''
         },
         validationSchema: formSchema,
             onSubmit: (values, { resetForm }) => {
@@ -75,6 +76,13 @@ export function RsvpForm({ eventId}: RsvpFormProps) {
             });
         },
     });
+
+    const handleAddPlusOneChange = (e: { target: { value: string; }; }) => {
+        formik.setFieldValue("addPlusOne", e.target.value);
+        if (e.target.value === "false") {
+            formik.setFieldValue("plusOneName", ""); 
+        }
+    };
 
     return (
     <div className="mx-auto font-sans text-center justify-between gap-x-6 p-6 lg:px-8">
@@ -187,7 +195,7 @@ export function RsvpForm({ eventId}: RsvpFormProps) {
                         id="addPlusOne"
                         value="true"
                         checked={formik.values.addPlusOne === 'true'}
-                        onChange={formik.handleChange}                    
+                        onChange={handleAddPlusOneChange}                    
                     /> Yes
                     <input
                         type="radio"
@@ -195,11 +203,27 @@ export function RsvpForm({ eventId}: RsvpFormProps) {
                         id = "addPlusOne"
                         value="false"
                         checked={formik.values.addPlusOne === 'false'}
-                        onChange={formik.handleChange}
+                        onChange={handleAddPlusOneChange}
                     /> No
-                    {formik.touched.addPlusOne && formik.errors.addPlusOne && (
-                        <div className="text-red-500">{formik.errors.addPlusOne}</div>
-                    )}
+                    {formik.values.addPlusOne === 'true' && (
+                    <div>
+                        <label htmlFor="plusOneName" className="block text-sm font-sans leading-6 text-yellow-500">
+                            Plus-One Name:
+                        </label>
+                        <input
+                            type="text"
+                            name="plusOneName"
+                            id="plusOneName"
+                            value={formik.values.plusOneName}
+                            onChange={formik.handleChange}
+                            onBlur={formik.handleBlur}
+                            className={`block w-full rounded-md border-0 px-3.5 py-2 text-slate-900 shadow-sm ring-1 ring-inset ${formik.touched.plusOneName && formik.errors.plusOneName ? "ring-red-500" : "ring-slate-300"} focus:ring-2 focus:ring-inset focus:ring-amber-400 sm:text-sm sm:leading-6`}
+                        />
+                        {formik.touched.plusOneName && formik.errors.plusOneName && (
+                            <div className="text-red-500">{formik.errors.plusOneName}</div>
+                        )}
+                    </div>
+                )}
                 </div>
                 
                 <button type="submit" className="block w-full font-sans rounded-md bg-yellow-500 px-3.5 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-slate-500">Add</button>

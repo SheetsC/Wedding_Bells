@@ -16,6 +16,7 @@ public class GuestAndRsvpDto
     public int GuestId {get; set;}
     public int MealPrefId {get; set;}
     public bool AddPlusOne { get; set; }
+    public string PlusOneName {get;set;}
 
 
 }

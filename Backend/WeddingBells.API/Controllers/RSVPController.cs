@@ -89,7 +89,8 @@ public class RSVPController : ControllerBase
                 Attending = newGuestAndRsvp.Attending,
                 GuestId = newGuest.GuestId,
                 MealPrefId = newGuestAndRsvp.MealPrefId,
-                AddPlusOne = newGuestAndRsvp.AddPlusOne
+                AddPlusOne = newGuestAndRsvp.AddPlusOne,
+                PlusOneName = newGuestAndRsvp.PlusOneName
 
             };
             await _context.RSVPs.AddAsync(newRSVP);

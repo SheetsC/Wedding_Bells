@@ -27,5 +27,7 @@ namespace WeddingBells.API.Models
 
         public bool AddPlusOne {get; set;}
 
+        public string? PlusOneName {get; set;}
+
     }
 }
