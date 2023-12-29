@@ -47,7 +47,8 @@ export function RsvpForm({ eventId}: RsvpFormProps) {
                     attending: Boolean(values.attending),
                     mealPrefId: Number(1), 
                     eventId: eventId, 
-                    addPlusOne: Boolean(values.addPlusOne) 
+                    addPlusOne: Boolean(values.addPlusOne),
+                    plusOneName: values.plusOneName
                 };
                 
             console.log("Sending Form values:", newGuestAndRSVP);
