@@ -16,6 +16,10 @@ interface EventData {
 }
 interface EventPageParams{
   eventId: number;
+  title: string;
+  location: string;
+  date: string;
+  description: string;
 }
 
 const Events: NextPage<{ params: EventPageParams }> = ({ params }) => {
@@ -40,7 +44,7 @@ const Events: NextPage<{ params: EventPageParams }> = ({ params }) => {
         <div>
           <h1>Event ID: {eventData.title}</h1>
           {/* Additional content based on eventData */}
-          <RsvpForm eventId={Number(eventId)} />
+          <RsvpForm eventData={undefined} {...eventData} />
 
         </div>
       ) : (

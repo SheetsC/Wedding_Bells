@@ -4,10 +4,10 @@ import {useState} from 'react'
 import {Dialog} from '@headlessui/react';
 
 interface RsvpFormProps {
-    eventId: number;
+    eventData: any
     
   }
-export function RsvpForm({ eventId}: RsvpFormProps) {
+export function RsvpForm({ eventData}: RsvpFormProps) {
     
     const formSchema = Yup.object().shape({
         emailAddress: Yup.string().required('Required'),
@@ -18,8 +18,7 @@ export function RsvpForm({ eventId}: RsvpFormProps) {
         mealPrefId: Yup.number(),
         addPlusOne: Yup.boolean(),
         plusOneName: Yup.string().when('addPlusOne', (addPlusOneValue: any , schema: any) => {
-            console.log("addPlusOneValue in validation:", addPlusOneValue);
-            return addPlusOneValue ? schema.required('Please enter the name of your plus-one.') : schema.notRequired();
+            return addPlusOneValue ? schema.required('Please enter the name of your plus-one.').notOneOf(["none"], "Plus-one name is required.") : schema.notRequired();
         })
 
     });
@@ -47,7 +46,7 @@ export function RsvpForm({ eventId}: RsvpFormProps) {
                     phoneNumber: values.phoneNumber,
                     attending: Boolean(values.attending),
                     mealPrefId: Number(1), 
-                    eventId: eventId, 
+                    eventId: eventData.eventId, 
                     addPlusOne: Boolean(values.addPlusOne),
                     plusOneName: values.plusOneName
                 };
@@ -230,7 +229,7 @@ export function RsvpForm({ eventId}: RsvpFormProps) {
                 )}
                 </div>
                 
-                <button onClick={()=>console.log(formik.values)}type="submit" className="block w-full font-sans rounded-md bg-yellow-500 px-3.5 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-slate-500">Add</button>
+                <button onClick={()=>formik.resetForm()}type="submit" className="block w-full font-sans rounded-md bg-yellow-500 px-3.5 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-slate-500">Add</button>
             </form>
             <Dialog open={modalOpen} onClose={() => setModalOpen(false)}>
                 <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
