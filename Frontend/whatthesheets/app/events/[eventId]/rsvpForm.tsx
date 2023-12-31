@@ -69,6 +69,7 @@ export function RsvpForm({ eventData}: RsvpFormProps) {
                 setSubmitError(null);
                 const emailData = {
                     to_name: values.firstName + ' ' + values.lastName,
+                    to_email: values.emailAddress,
                     from_name: "Kendall and Melissa",
                     event_name: eventData.title,
                     event_location: eventData.location,
