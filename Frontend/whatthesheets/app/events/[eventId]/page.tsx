@@ -3,7 +3,7 @@ import { NextPage } from 'next';
 import { useEffect, useState } from 'react';
 import { RsvpForm } from './rsvpForm';
 // Assuming this interface matches the structure of data returned from your API
-interface EventData {
+export interface EventData {
   
     eventId: number;
     title: string;
@@ -40,7 +40,7 @@ const Events: NextPage<{ params: EventPageParams }> = ({ params }) => {
         <div>
           <h1>Event ID: {eventData.title}</h1>
           {/* Additional content based on eventData */}
-          <RsvpForm eventId={Number(eventId)} />
+          <RsvpForm eventData={eventData} />
 
         </div>
       ) : (

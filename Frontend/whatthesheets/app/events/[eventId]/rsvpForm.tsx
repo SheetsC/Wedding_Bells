@@ -2,12 +2,13 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import {useState} from 'react'
 import {Dialog} from '@headlessui/react';
+import {EventData} from './page'
 
 interface RsvpFormProps {
-    eventId: number;
+    eventData: EventData;
     
   }
-export function RsvpForm({ eventId}: RsvpFormProps) {
+export function RsvpForm({ eventData}: RsvpFormProps) {
     
     const formSchema = Yup.object().shape({
         emailAddress: Yup.string().required('Required'),
@@ -46,7 +47,7 @@ export function RsvpForm({ eventId}: RsvpFormProps) {
                     phoneNumber: values.phoneNumber,
                     attending: Boolean(values.attending),
                     mealPrefId: Number(1), 
-                    eventId: eventId, 
+                    eventId: eventData.eventId, 
                     addPlusOne: Boolean(values.addPlusOne),
                     plusOneName: values.plusOneName
                 };
