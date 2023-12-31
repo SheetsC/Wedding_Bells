@@ -16,10 +16,6 @@ interface EventData {
 }
 interface EventPageParams{
   eventId: number;
-  title: string;
-  location: string;
-  date: string;
-  description: string;
 }
 
 const Events: NextPage<{ params: EventPageParams }> = ({ params }) => {
