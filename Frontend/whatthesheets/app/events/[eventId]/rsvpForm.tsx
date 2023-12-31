@@ -75,7 +75,7 @@ export function RsvpForm({ eventData}: RsvpFormProps) {
                     plus_one: values.plusOneName,
                     event_date: eventData.date
                 };
-                emailjs.send('service_kandmwedding', 'template_ua1jxy3', emailData, '8zUT3hCrM_RlE28_E')
+                emailjs.send('service_kandmwedding', 'template_60ncaoc', emailData, '8zUT3hCrM_RlE28_E')
                 .then((response) => {
                     console.log('Email sent successfully!', response.status, response.text);
                     // Additional handling if needed
