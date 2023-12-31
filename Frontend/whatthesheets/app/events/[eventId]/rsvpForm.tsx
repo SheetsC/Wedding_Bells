@@ -229,7 +229,7 @@ export function RsvpForm({ eventId}: RsvpFormProps) {
                 )}
                 </div>
                 
-                <button onClick={()=>formik.resetForm()}type="submit" className="block w-full font-sans rounded-md bg-yellow-500 px-3.5 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-slate-500">Add</button>
+                <button onClick={()=>console.log(formik.values)}type="submit" className="block w-full font-sans rounded-md bg-yellow-500 px-3.5 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-slate-500">Add</button>
             </form>
             <Dialog open={modalOpen} onClose={() => setModalOpen(false)}>
                 <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
