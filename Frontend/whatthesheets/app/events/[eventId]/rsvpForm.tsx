@@ -3,6 +3,7 @@ import * as Yup from 'yup';
 import {useState} from 'react'
 import {Dialog} from '@headlessui/react';
 import {EventData} from './page'
+import emailjs from 'emailjs-com';
 
 interface RsvpFormProps {
     eventData: EventData;
@@ -66,6 +67,22 @@ export function RsvpForm({ eventData}: RsvpFormProps) {
                 setRsvpId(data.rsvP_ID)
                 setModalOpen(true);
                 setSubmitError(null);
+                const emailData = {
+                    to_name: values.firstName + ' ' + values.lastName,
+                    from_name: "Kendall and Melissa",
+                    event_name: eventData.title,
+                    event_location: eventData.location,
+                    plus_one: values.plusOneName,
+                    event_date: eventData.date
+                };
+                emailjs.send('service_kandmwedding', 'template_ua1jxy3', emailData, '8zUT3hCrM_RlE28_E')
+                .then((response) => {
+                    console.log('Email sent successfully!', response.status, response.text);
+                    // Additional handling if needed
+                }, (err) => {
+                    console.log('Failed to send email...', err);
+                    // Error handling
+                });
             })
             .catch(error => {
                 
