@@ -4,10 +4,10 @@ import {useState} from 'react'
 import {Dialog} from '@headlessui/react';
 
 interface RsvpFormProps {
-    eventData: any
+    eventId: number;
     
   }
-export function RsvpForm({ eventData}: RsvpFormProps) {
+export function RsvpForm({ eventId}: RsvpFormProps) {
     
     const formSchema = Yup.object().shape({
         emailAddress: Yup.string().required('Required'),
@@ -46,7 +46,7 @@ export function RsvpForm({ eventData}: RsvpFormProps) {
                     phoneNumber: values.phoneNumber,
                     attending: Boolean(values.attending),
                     mealPrefId: Number(1), 
-                    eventId: eventData.eventId, 
+                    eventId: eventId, 
                     addPlusOne: Boolean(values.addPlusOne),
                     plusOneName: values.plusOneName
                 };

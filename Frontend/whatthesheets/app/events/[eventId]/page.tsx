@@ -40,7 +40,7 @@ const Events: NextPage<{ params: EventPageParams }> = ({ params }) => {
         <div>
           <h1>Event ID: {eventData.title}</h1>
           {/* Additional content based on eventData */}
-          <RsvpForm eventData={undefined} {...eventData} />
+          <RsvpForm eventId={Number(eventId)} />
 
         </div>
       ) : (
