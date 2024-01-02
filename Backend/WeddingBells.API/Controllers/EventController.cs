@@ -25,7 +25,7 @@ public class EventController : ControllerBase
         {
             var myEvent = await _context.Events
                 .Where(e => e.EventId == eventId)
-                .Select(e => new { e.EventId, e.Title, e.Date, e.Description })
+                .Select(e => new { e.EventId, e.Title, e.Date, e.Description, e.Location })
                 .FirstOrDefaultAsync();
 
             if(myEvent == null)
