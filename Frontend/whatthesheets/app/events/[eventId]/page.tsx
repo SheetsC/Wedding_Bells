@@ -36,23 +36,25 @@ const Events: NextPage<{ params: EventPageParams }> = ({ params }) => {
   }, [eventId]);
 
   return (
-    <div className="relative w-screen h-screen">
-      {/* Image with fade-in effect */}
-      <Image
-        src="/purposal.jpg"
-        alt="Couple"
-        layout="fill"
-        objectFit="cover"
-        className="transition-opacity duration-2000 ease-in opacity-0 group-hover:opacity-100"
-      />
+    <div className="relative w-full min-h-screen">
+      {/* Background Image */}
+      <div className="absolute inset-0">
+        <Image
+          src="/purposal.jpg"
+          alt="Couple"
+          layout="fill"
+          objectFit="cover"
+          className="transition-opacity duration-2000 ease-in opacity-100"
+        />
+      </div>
 
-      {/* Blue filter overlay */}
-      <div className="absolute top-0 left-0 w-full h-full bg-blue-200 bg-opacity-30"></div>
+      {/* Blue Overlay */}
+      <div className="absolute inset-0 bg-blue-200 bg-opacity-30"></div>
 
-      {/* Event Data */}
-      <div className="relative z-10 p-4 text-center">
+      {/* Content */}
+      <div className="relative z-10 flex items-center justify-center min-h-screen">
         {eventData ? (
-          <div>
+          <div className="text-center p-4">
             <h1 className="text-xl text-white font-bold">{eventData.title}</h1>
             {/* Additional content based on eventData */}
             <RsvpForm eventData={eventData} />
