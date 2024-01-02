@@ -3,6 +3,7 @@ import { NextPage } from 'next';
 import { useEffect, useState } from 'react';
 import { RsvpForm } from './rsvpForm';
 import Image from 'next/image';
+import { JoinUs } from './joinUs';
 
 export interface EventData {
   
@@ -49,8 +50,10 @@ const Events: NextPage<{ params: EventPageParams }> = ({ params }) => {
       </div>
 
       {/* Scrollable Content */}
+      
       <div className="relative z-10 pt-32 pb-8 min-h-screen">
         <div className="max-w-4xl mx-auto overflow-auto">
+          <JoinUs/>
           {eventData ? (
             <div className="text-center p-4 rounded-lg shadow-lg">
               <h1 className="text-xl font-bold">{eventData.title}</h1>
