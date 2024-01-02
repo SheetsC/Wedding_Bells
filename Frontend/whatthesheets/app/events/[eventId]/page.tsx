@@ -2,7 +2,8 @@
 import { NextPage } from 'next';
 import { useEffect, useState } from 'react';
 import { RsvpForm } from './rsvpForm';
-// Assuming this interface matches the structure of data returned from your API
+import Image from 'next/image';
+
 export interface EventData {
   
     eventId: number;
@@ -35,17 +36,31 @@ const Events: NextPage<{ params: EventPageParams }> = ({ params }) => {
   }, [eventId]);
 
   return (
-    <div>
-      {eventData ? (
-        <div>
-          <h1>Event ID: {eventData.title}</h1>
-          {/* Additional content based on eventData */}
-          <RsvpForm eventData={eventData} />
+    <div className="relative w-screen h-screen">
+      {/* Image with fade-in effect */}
+      <Image
+        src="/purposal.jpg"
+        alt="Couple"
+        layout="fill"
+        objectFit="cover"
+        className="transition-opacity duration-2000 ease-in opacity-0 group-hover:opacity-100"
+      />
 
-        </div>
-      ) : (
-        <div>Loading event data...</div>
-      )}
+      {/* Blue filter overlay */}
+      <div className="absolute top-0 left-0 w-full h-full bg-blue-200 bg-opacity-30"></div>
+
+      {/* Event Data */}
+      <div className="relative z-10 p-4 text-center">
+        {eventData ? (
+          <div>
+            <h1 className="text-xl text-white font-bold">{eventData.title}</h1>
+            {/* Additional content based on eventData */}
+            <RsvpForm eventData={eventData} />
+          </div>
+        ) : (
+          <div className="text-white">Loading event data...</div>
+        )}
+      </div>
     </div>
   );
 };
