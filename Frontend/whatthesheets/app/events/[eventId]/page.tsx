@@ -36,32 +36,31 @@ const Events: NextPage<{ params: EventPageParams }> = ({ params }) => {
   }, [eventId]);
 
   return (
-    <div className="relative w-full min-h-screen">
-      {/* Background Image */}
-      <div className="absolute inset-0">
+    <div className="relative">
+      {/* Fixed Background Image */}
+      <div className="fixed inset-0 z-0">
         <Image
           src="/purposal.jpg"
           alt="Couple"
           layout="fill"
           objectFit="cover"
-          className="transition-opacity duration-2000 ease-in opacity-100"
         />
+        <div className="absolute inset-0 bg-blue-300 bg-opacity-40"></div>
       </div>
 
-      {/* Blue Overlay */}
-      <div className="absolute inset-0 bg-blue-200 bg-opacity-30"></div>
-
-      {/* Content */}
-      <div className="relative z-10 flex items-center justify-center min-h-screen">
-        {eventData ? (
-          <div className="text-center p-4">
-            <h1 className="text-xl text-white font-bold">{eventData.title}</h1>
-            {/* Additional content based on eventData */}
-            <RsvpForm eventData={eventData} />
-          </div>
-        ) : (
-          <div className="text-white">Loading event data...</div>
-        )}
+      {/* Scrollable Content */}
+      <div className="relative z-10 pt-32 pb-8 min-h-screen">
+        <div className="max-w-4xl mx-auto overflow-auto">
+          {eventData ? (
+            <div className="text-center p-4 bg-white bg-opacity-80 rounded-lg shadow-lg">
+              <h1 className="text-xl font-bold">{eventData.title}</h1>
+              {/* Additional content based on eventData */}
+              <RsvpForm eventData={eventData} />
+            </div>
+          ) : (
+            <div className="text-center text-white">Loading event data...</div>
+          )}
+        </div>
       </div>
     </div>
   );
