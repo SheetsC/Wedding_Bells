@@ -1,6 +1,8 @@
+"use client"
+import { NextPage } from "next"
 import Image from "next/image"
 
-export function ThingsToDO (){
+const ThingsToDO:NextPage = () =>{
     return(
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4">
             <a href="https://www.steamboat.com/things-to-do/activity-details/scenic-gondola-rides" className="block border border-gray-200 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
@@ -48,3 +50,4 @@ export function ThingsToDO (){
         </div>
     )
 }
+export default ThingsToDO;
