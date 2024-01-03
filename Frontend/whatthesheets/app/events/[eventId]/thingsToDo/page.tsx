@@ -7,7 +7,7 @@ const ThingsToDO:NextPage = () =>{
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4">
             <a href="https://www.steamboat.com/things-to-do/activity-details/scenic-gondola-rides" className="block border border-gray-200 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
                 <Image
-                    src="https://www.steamboat.com/-/media/steamboat/winter2223/internal-heros/internalhero_gondolacabin.jpg?rev=748eefdfd7ee45369d1710279cec7f48?h=1308&w=2500&hash=99E5D65F8F8FC5B4B9F762CA1093F7AC"
+                    src="https://www.steamboat.com/-/media/steamboat/winter2223/internal-heros/internalhero_gondolacabin.jpg"
                     alt='Gondola Rides'
                     width={200}
                     height={200}
@@ -18,7 +18,7 @@ const ThingsToDO:NextPage = () =>{
             </a>
             <a href="https://www.steamboat.com/things-to-do/dining/oasis-sundeck" className="block border border-gray-200 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
                 <Image 
-                    src="https://www.steamboat.com/-/media/steamboat/food-and-beverage/oasis/slider/2400x1350/oasis_valley_view.jpg?rev=0f92b4885aa64d94807207e2b599d9c4?h=1350&w=2400&hash=A760817FD06B25BC52CEF1A9C3AD77A3"
+                    src="https://www.steamboat.com/-/media/steamboat/food-and-beverage/oasis/slider/2400x1350/oasis_valley_view.jpg"
                     alt="Oasis Sundeck"
                     width={200}
                     height={200}
