@@ -12,6 +12,7 @@ const ThingsToDO:NextPage = () =>{
                     width={200}
                     height={200}
                     layout="responsive"
+                    className="p-4"
                 />
                 <div className="p-4">
                     <p>Take a ride up Mt. Werner and enjoy the views that can only be appreciated from the Steamboat Gondola or Wild Blue Gondola. Scenic Gondola Rides are for foot passengers only. Guests will not be permitted to board the gondola with skis or snowboard equipment, and snowshoes are only allowed on the Steamboat Gondola. With an adult Scenic Gondola Ride ticket purchase, guest will receive a $10 dining voucher loaded directly on to their lift ticket card. Ticket includes unlimited rides for the date on the ticket.</p>
@@ -24,6 +25,7 @@ const ThingsToDO:NextPage = () =>{
                     width={200}
                     height={200}
                     layout="responsive"
+                    className="p-4"
                 />
                 <div className="p-4">
                     <p>Located at the top of the gondola on the third floor of the Thunderhead building, lunch at the Oasis Sundeck comes with one of the best views in Steamboat Springs. Kick back and relax at 9,000 ft. above sea level while sipping your favorite drink or ice-cold beer. Enjoy a number of tasty bites from the grill while you take in the sweeping views of the Yampa Valley.</p>
@@ -36,6 +38,7 @@ const ThingsToDO:NextPage = () =>{
                     height={200}
                     width={200}
                     layout="responsive"
+                    className="p-4"
                 />
                 <div className="p-4">
                     <p>Steamboat Springs Boat Rentals™ at Stagecoach Marina located less than 15 miles south of town in Stagecoach State Park is your closest and most affordable option for boat rentals in Steamboat Springs. We are a family Owned Marina and our friendly staff consists of locals who know the lake and share a passion for boating and fishing. Let us help make your visit to the pristine Yampa Valley complete by spending a day at the lake.</p>
@@ -48,6 +51,7 @@ const ThingsToDO:NextPage = () =>{
                 width={200}
                 height={200}
                 layout="responsive"
+                className="p-4"
                 />
                 <div className="p-4">
                     <p>Stagecoach State Park sets the stage for great recreation in the lush Yampa Valley near Steamboat Springs.  Vistas and views are backdrops to the 820 surface acre reservoir providing renown lake and river fishing.  A year-round destination, the park makes a great base camp to explore the variety of festivals, sports, activities, and attractions of the area.</p>
