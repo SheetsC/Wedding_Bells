@@ -42,6 +42,8 @@ const ThingsToDO:NextPage = () =>{
                 <Image
                 src="https://www.colorado.com/sites/default/files/styles/slideshow_slide_medium/public/listing_images/profile/5054/stagecoach18.jpg.webp?itok=yo6Cz_6s"
                 alt="Stagecoach State Park attraction"
+                width={200}
+                height={200}
                 />
                 <div className="p-4">
                     <p>Stagecoach State Park sets the stage for great recreation in the lush Yampa Valley near Steamboat Springs.  Vistas and views are backdrops to the 820 surface acre reservoir providing renown lake and river fishing.  A year-round destination, the park makes a great base camp to explore the variety of festivals, sports, activities, and attractions of the area.</p>

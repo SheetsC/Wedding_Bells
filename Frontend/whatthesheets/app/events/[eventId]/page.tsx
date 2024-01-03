@@ -57,7 +57,7 @@ const Events: NextPage<{ params: EventPageParams }> = ({ params }) => {
           <JoinUs/>
           {/* Link to Things to do page*/} 
           <Link href={`/events/${eventId}/thingsToDo`}>
-              <a className="text-blue-500 hover:text-blue-700">Things to Do</a>
+              <a className="text-blue-500 hover:text-blue-700">Things to Do in Steamboat</a>
           </Link>
           {eventData ? (
             <div className="text-center p-4 rounded-lg shadow-lg">
