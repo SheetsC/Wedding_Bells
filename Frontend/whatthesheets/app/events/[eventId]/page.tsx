@@ -54,6 +54,7 @@ const Events: NextPage<{ params: EventPageParams }> = ({ params }) => {
       <div className="relative z-10 pt-32 pb-8 min-h-screen">
         <div className="max-w-4xl mx-auto overflow-auto">
           <JoinUs/>
+          <a href='https://wedding-bells.vercel.app/events/1/thingsToDo'></a>
           {eventData ? (
             <div className="text-center p-4 rounded-lg shadow-lg">
               <h1 className="text-xl font-bold">{eventData.title}</h1>
