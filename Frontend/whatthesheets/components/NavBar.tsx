@@ -12,7 +12,7 @@ export const NavBar: React.FC<NavBarProps> = ({
   const navItems = ["Home", "Travel", "Things To Do", "RSVP"];
 
   return (
-    <nav className="bg-gray-100">
+    <nav className="bg-gray-100 hidden md:block ">
       <div className="container mx-auto px-4 py-4 flex justify-center items-center font-lora">
         <div className="flex space-x-10">
           {navItems.map((item) => (

@@ -1,4 +1,4 @@
-import { MainPageSection } from "@/components/MainPageSections";
+import { MainPageSection } from "@/components/MainPageSection";
 
 const Home: React.FC = () => {
   return <MainPageSection />;
