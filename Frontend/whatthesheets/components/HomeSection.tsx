@@ -1,7 +1,10 @@
 import Image from "next/image";
 import React from "react";
 
-export const HomeSection = () => {
+type SectionProps = {
+  setSelectedNav: (nav: string) => void;
+};
+export const HomeSection: React.FC<SectionProps> = ({ setSelectedNav }) => {
   return (
     <>
       <div className="flex justify-center items-center w-full md:w-3/5 ">
@@ -42,7 +45,10 @@ export const HomeSection = () => {
         </div>
       </div>
 
-      <button className="bg-black text-white py-2 px-4 rounded hover:bg-opacity-80 cursor-pointer w-28 font-lora mx-auto">
+      <button
+        onClick={() => setSelectedNav("RSVP")}
+        className="bg-black text-white py-2 px-4 rounded hover:bg-opacity-80 cursor-pointer w-28 font-lora mx-auto"
+      >
         RSVP
       </button>
 

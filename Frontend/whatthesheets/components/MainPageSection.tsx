@@ -1,17 +1,25 @@
 "use client";
-import { HomeSection, MobileMenu, NavBar } from "@/components";
 import { useState } from "react";
 import Image from "next/image";
+import {
+  ThingsToDoSection,
+  TravelSection,
+  RSVPSection,
+  HomeSection,
+  MobileMenu,
+  NavBar,
+} from "@/components";
 
 export const MainPageSection: React.FC = () => {
   const [selectedNav, setSelectedNav] = useState("Home");
 
   const renderSection = () => {
-    if (selectedNav === "Home") return <HomeSection />;
-    if (selectedNav == "Travel") return <HomeSection />;
-    if (selectedNav == "Things To Do") return <HomeSection />;
-    if (selectedNav == "RSVP") return <HomeSection />;
-    return <HomeSection />;
+    if (selectedNav === "Home")
+      return <HomeSection setSelectedNav={setSelectedNav} />;
+    if (selectedNav == "Travel") return <TravelSection />;
+    if (selectedNav == "Things To Do") return <ThingsToDoSection />;
+    if (selectedNav == "RSVP") return <RSVPSection />;
+    return <HomeSection setSelectedNav={setSelectedNav} />;
   };
 
   return (
