@@ -1,23 +1,18 @@
 "use client";
-import { NextPage } from 'next';
-import { useEffect, useState } from 'react';
-import { RsvpForm } from './rsvpForm';
-import Image from 'next/image';
-import { JoinUs } from './joinUs';
-import Link from 'next/link';
+import { NextPage } from "next";
+import { useEffect, useState } from "react";
+import { RsvpForm } from "./rsvpForm";
+import Image from "next/image";
+import Link from "next/link";
 
 export interface EventData {
-  
-    eventId: number;
-    title: string;
-    location: string;
-    date: string;
-    description: string;
-
-  
-  
+  eventId: number;
+  title: string;
+  location: string;
+  date: string;
+  description: string;
 }
-interface EventPageParams{
+interface EventPageParams {
   eventId: number;
 }
 
@@ -31,9 +26,12 @@ const Events: NextPage<{ params: EventPageParams }> = ({ params }) => {
       //fetch(`http://localhost:5021/event/${eventId}`)
 
       fetch(`https://weddingbells-api.onrender.com/event/${eventId}`)
-        .then(response => response.json())
-        .then(data => {setEventData(data); console.log(data)})
-        .catch(error => console.error('Error fetching event:', error));
+        .then((response) => response.json())
+        .then((data) => {
+          setEventData(data);
+          console.log(data);
+        })
+        .catch((error) => console.error("Error fetching event:", error));
     }
   }, [eventId]);
 
@@ -51,15 +49,15 @@ const Events: NextPage<{ params: EventPageParams }> = ({ params }) => {
       </div>
 
       {/* Scrollable Content */}
-      
+
       <div className="relative z-10 pt-32 pb-8 min-h-screen">
         <div className="max-w-4xl mx-auto overflow-auto">
-          <JoinUs/>
-          {/* Link to Things to do page*/} 
+          {/* Link to Things to do page*/}
           <Link
             href={`/events/${eventId}/thingsToDo`}
-            className="text-blue-500 hover:text-blue-700">
-              Things to Do in Steamboat
+            className="text-blue-500 hover:text-blue-700"
+          >
+            Things to Do in Steamboat
           </Link>
           {eventData ? (
             <div className="text-center p-4 rounded-lg shadow-lg">
