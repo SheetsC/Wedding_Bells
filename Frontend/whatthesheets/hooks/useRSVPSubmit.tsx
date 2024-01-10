@@ -43,6 +43,7 @@ export const useRSVPSubmit = () => {
         setError(false);
         const emailData = {
           to_name: values.firstName + ' ' + values.lastName,
+          to_email: values.emailAddress,
           from_name: "Kendall and Melissa",
           event_name: "Wedding Ceremony",
           event_location: "Steamboat Springs, Colorado",
