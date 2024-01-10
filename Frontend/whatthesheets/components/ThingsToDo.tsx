@@ -18,7 +18,11 @@ export const ThingsToDoSection: React.FC = () => {
       "_blank"
     );
   };
-
+  const onRentalClick= () => {
+    window.open("https://www.steamboatspringsboatrentals.com/",
+    "_blank"
+    );
+  };
   return (
     <div className="mt-24 mb-12">
       <h1 className="text-3xl font-lora text-black tracking-wider text-center mb-8 underline italic">
@@ -29,12 +33,12 @@ export const ThingsToDoSection: React.FC = () => {
           <div className="text-2xl font-lora text-black tracking-wider">
             Strawberry Hotsprings
           </div>
-          <div className="flex items-center justify-center w-full md:w-1/2 lg:w-full">
+          <div className="flex items-center justify-center w-full md:w-1/2 ">
             <Image
               src="/hotsprings.jpeg"
               alt="Hot spring"
               width={300}
-              height={250}
+              height={350}
             />
           </div>
           <div className="text-lg font-lora text-black text-center">
@@ -65,7 +69,7 @@ export const ThingsToDoSection: React.FC = () => {
               src="/gondala.jpeg"
               alt="Hot spring"
               width={300}
-              height={250}
+              height={350}
             />
           </div>
           <div className="text-lg font-lora text-black text-center">
@@ -96,7 +100,7 @@ export const ThingsToDoSection: React.FC = () => {
               src="/oasis.webp"
               alt="Hot spring"
               width={300}
-              height={250}
+              height={350}
             />
           </div>
           <div className="text-lg font-lora text-black text-center">
@@ -118,26 +122,27 @@ export const ThingsToDoSection: React.FC = () => {
       <div className="mt-8 flex flex-col gap-12 items-center justify-center">
         <div className="flex flex-col gap-2 items-center justify-center">
           <div className="text-2xl font-lora text-black tracking-wider">
-            Oasis Sundeck
+            Steamboat Springs Boat Rentals
           </div>
           <div className="flex items-center justify-center w-full md:w-1/2">
             <Image
-              src="/oasis.webp"
-              alt="Hot spring"
+              src="/rentals.jpeg"
+              alt="boat dock"
               width={300}
-              height={250}
+              height={350}
             />
           </div>
           <div className="text-lg font-lora text-black text-center">
-            Located at the top of the gondola on the third floor of the
-            Thunderhead building, lunch at the Oasis Sundeck comes with one of
-            the best views in Steamboat Springs. Kick back and relax at 9,000
-            ft. above sea level while sipping your favorite drink or ice-cold
-            beer. Enjoy a number of tasty bites from the grill while you take in
-            the sweeping views of the Yampa Valley.
+          Steamboat Springs Boat Rentals™ at Stagecoach Marina located less 
+          than 15 miles south of town in Stagecoach State Park is your closest 
+          and most affordable option for boat rentals in Steamboat Springs. 
+          We are a family Owned Marina and our friendly staff consists of 
+          locals who know the lake and share a passion for boating and fishing. 
+          Let us help make your visit to the pristine Yampa Valley complete by 
+          spending a day at the lake
           </div>
           <button
-            onClick={onOasisClick}
+            onClick={onRentalClick}
             className="bg-black text-white py-2 px-4 rounded hover:bg-opacity-80 cursor-pointer w-28 font-lora mx-auto"
           >
             WEBSITE
