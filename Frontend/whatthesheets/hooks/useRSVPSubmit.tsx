@@ -41,6 +41,7 @@ export const useRSVPSubmit = () => {
         setLoading(false);
         setResponse(data);
         setError(false);
+        console.log(data);
         const emailData = {
           to_name: values.firstName + ' ' + values.lastName,
           to_email: values.emailAddress,
