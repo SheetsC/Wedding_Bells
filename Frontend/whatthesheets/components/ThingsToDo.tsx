@@ -29,7 +29,7 @@ export const ThingsToDoSection: React.FC = () => {
           <div className="text-2xl font-lora text-black tracking-wider">
             Strawberry Hotsprings
           </div>
-          <div className="flex items-center justify-center w-full md:w-1/2">
+          <div className="flex items-center justify-center w-full md:w-1/2 lg:w-full">
             <Image
               src="/hotsprings.jpeg"
               alt="Hot spring"

@@ -42,7 +42,7 @@ export const TravelSection: React.FC = () => {
         </div>
         <div className="flex flex-col gap-2 items-center justify-center">
           <div className="text-2xl font-lora text-black tracking-wider">
-            Worldmark Resort
+            The Village at Steamboat Springs
           </div>
           <div className="w-full md:w-1/2">
             <Image
