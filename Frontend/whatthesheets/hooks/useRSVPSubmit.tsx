@@ -1,4 +1,5 @@
 import { useState } from "react";
+import emailjs from 'emailjs-com'
 
 export type RSVPData = {
   firstName: string;
@@ -40,7 +41,22 @@ export const useRSVPSubmit = () => {
         setLoading(false);
         setResponse(data);
         setError(false);
+        const emailData = {
+          to_name: values.firstName + ' ' + values.lastName,
+          from_name: "Kendall and Melissa",
+          event_name: "Wedding Ceremony",
+          event_location: "Steamboat Springs, Colorado",
+          plus_one: values.plusOneName,
+          event_date: "June 22nd, 2024"
+          };
+          emailjs.send('service_kandmwedding', 'template_ua1jxy3', emailData, '8zUT3hCrM_RlE28_E')
+          .then((response) => {
+              console.log('Email sent successfully!', response.status, response.text);
+          }, (err) => {
+              console.log('Failed to send email...', err);
+          });
       })
+      
       .catch((error) => {
         setLoading(false);
         console.log(error);
