@@ -29,8 +29,8 @@ export const TravelSection: React.FC = () => {
             <Image
               src="/the-lodge.jpeg"
               alt="The Ldoge Image"
-              width={300}
-              height={250}
+              width={400}
+              height={450}
             />
           </div>
           <button
@@ -48,8 +48,8 @@ export const TravelSection: React.FC = () => {
             <Image
               src="/worldmark-springs.jpeg"
               alt="The Ldoge Image"
-              width={300}
-              height={250}
+              width={400}
+              height={450}
             />
           </div>
           <button
