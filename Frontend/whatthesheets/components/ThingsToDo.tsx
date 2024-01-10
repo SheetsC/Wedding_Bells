@@ -41,7 +41,7 @@ export const ThingsToDoSection: React.FC = () => {
               height={350}
             />
           </div>
-          <div className="text-lg font-lora text-black text-center">
+          <div className="text-lg font-lora text-black text-center w-1/2">
             Strawberry Park Hot Springs blends the pure natural beauty of the
             environment with the unique stone masonry of our thermal pools. We
             will undoubtedly impress you with each visit! Our facility is unique
@@ -72,7 +72,7 @@ export const ThingsToDoSection: React.FC = () => {
               height={350}
             />
           </div>
-          <div className="text-lg font-lora text-black text-center">
+          <div className="text-lg font-lora text-black text-center w-1/2">
             Take a ride up Mt. Werner and enjoy the views that can only be
             appreciated from the Steamboat Gondola or Wild Blue Gondola.Scenic
             Gondola Rides are for foot passengers only. Guests will not be
@@ -103,7 +103,7 @@ export const ThingsToDoSection: React.FC = () => {
               height={350}
             />
           </div>
-          <div className="text-lg font-lora text-black text-center">
+          <div className="text-lg font-lora text-black text-center w-1/2">
             Located at the top of the gondola on the third floor of the
             Thunderhead building, lunch at the Oasis Sundeck comes with one of
             the best views in Steamboat Springs. Kick back and relax at 9,000
@@ -132,7 +132,7 @@ export const ThingsToDoSection: React.FC = () => {
               height={350}
             />
           </div>
-          <div className="text-lg font-lora text-black text-center">
+          <div className="text-lg font-lora text-black text-center w-1/2">
           Steamboat Springs Boat Rentals™ at Stagecoach Marina located less 
           than 15 miles south of town in Stagecoach State Park is your closest 
           and most affordable option for boat rentals in Steamboat Springs. 
