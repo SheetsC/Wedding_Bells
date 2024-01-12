@@ -9,9 +9,13 @@ import {
   MobileMenu,
   NavBar,
 } from "@/components";
+import useWarmUp from "@/hooks/useWarmUp";
 
 export const MainPageSection: React.FC = () => {
+  const {makeWarmUpCall} = useWarmUp();
+    makeWarmUpCall();
   const [selectedNav, setSelectedNav] = useState("Home");
+
 
   const renderSection = () => {
     if (selectedNav === "Home")
@@ -21,6 +25,7 @@ export const MainPageSection: React.FC = () => {
     if (selectedNav == "RSVP") return <RSVPSection />;
     return <HomeSection setSelectedNav={setSelectedNav} />;
   };
+  
 
   return (
     <div className="min-h-screen  bg-white flex flex-col md:justify-center md:items-center flex-start z-0">

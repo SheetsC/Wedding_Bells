@@ -36,7 +36,7 @@ builder.Services.AddCors(options =>
             builder.WithOrigins("https://weddingbells-api.onrender.com", 
                                 "http://localhost:3000", 
                                 "https://wedding-bells.vercel.app",
-                                "www.melissa-and-kendall.com")
+                                "https://melissa-and-kendall.com")
                    .AllowAnyHeader()
                    .AllowAnyMethod();
         });

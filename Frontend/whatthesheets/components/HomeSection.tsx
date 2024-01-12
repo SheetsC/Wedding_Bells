@@ -114,7 +114,7 @@ export const HomeSection: React.FC<SectionProps> = ({ setSelectedNav }) => {
               8:00PM - 11:00PM
             </div>
             <div className="md:text-2xl text-lg font-lora font-bold text-black tracking-wider w-1/2">
-              COCKTAIL HOUR
+              OPTIONAL AFTER PARTY
               <p className="text-md md:text-xl font-lora font-normal text-black tracking-wide mt-2">
                 Schmiggitys
               </p>
