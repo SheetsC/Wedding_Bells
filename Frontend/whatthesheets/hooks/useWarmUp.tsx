@@ -4,7 +4,7 @@ const useWarmUp = ()=>
 {
     
     const makeWarmUpCall = ()=>{
-        fetch(`https://weddingbells-api.onrender.com/rsvp`,{
+        fetch(`https://weddingbells-api.onrender.com/weatherForecast`,{
             method: "GET",
             headers: { "Content-Type": "application/json" },
         })
