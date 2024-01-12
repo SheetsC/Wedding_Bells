@@ -10,6 +10,6 @@ public class WeatherForecastController : ControllerBase
     [HttpGet]
     public IActionResult WarmUp()
     {
-        return Ok("warmed");
+        return Ok( "warmed");
     }
 }
