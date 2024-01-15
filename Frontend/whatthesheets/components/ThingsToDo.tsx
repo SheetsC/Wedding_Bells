@@ -121,7 +121,7 @@ export const ThingsToDoSection: React.FC = () => {
       </div>
       <div className="mt-8 flex flex-col gap-12 items-center justify-center">
         <div className="flex flex-col gap-2 items-center justify-center">
-          <div className="text-2xl font-lora text-black tracking-wider">
+          <div className="text-2xl text-center font-lora text-black tracking-wider">
             Steamboat Springs Boat Rentals
           </div>
           <div className="flex items-center justify-center w-full md:w-1/2">
