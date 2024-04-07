@@ -51,6 +51,14 @@ export const HomeSection: React.FC<SectionProps> = ({ setSelectedNav }) => {
       >
         RSVP
       </button>
+      
+      <button
+  onClick={() => window.location.href = 'https://www.amazon.com/hz/wishlist/ls/3K67C7GIP3U5K?ref_=wl_share'}
+  className="bg-black text-white py-2 px-4 rounded hover:bg-opacity-80 cursor-pointer w-28 font-lora mx-auto"
+>
+  Amazon Gift Registry
+</button>
+
 
       <main className="flex w-full py-8 text-black items-center justify-center">
         <section className=" flex flex-col md:items-center gap-2">
@@ -103,9 +111,11 @@ export const HomeSection: React.FC<SectionProps> = ({ setSelectedNav }) => {
             <div className="text-lg md:text-2xl font-lora font-bold text-black tracking-wider w-full md:w-1/2">
               LUNCH
               <p className="text-md md:text-xl font-lora font-normal  text-black tracking-wide">
-                LOCATION TBD{" "}
+                Yampa River Icehouse
               </p>
-              <p className="text-md md:text-xl font-lora font-normal text-black tracking-wide"></p>
+              <p className="text-md md:text-xl font-lora font-normal text-black tracking-wide">
+                  751 Yampa St. Steamboard Springs, CO 80487
+              </p>
             </div>
           </div>
           <div className="h-px bg-gray-200 w-[90%] md:w-1/2"></div>{" "}
