@@ -53,7 +53,7 @@ export const HomeSection: React.FC<SectionProps> = ({ setSelectedNav }) => {
       </button>
       <br/>
       <button
-      onClick={() => window.location.href = 'https://www.amazon.com/hz/wishlist/ls/3K67C7GIP3U5K?ref_=wl_share'}
+      onClick={() => window.location.href = 'https://www.amazon.com/wedding/registry/3W1ROL8IK2P4C'}
       className="bg-black text-white py-2 px-4 rounded hover:bg-opacity-80 cursor-pointer w-28 font-lora mx-auto"
       >
         Gift Registry
