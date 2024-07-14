@@ -10,7 +10,7 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({
   setSelectedNav,
 }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const navItems = ["Home", "Travel", "Things To Do", "RSVP", "Photo Dumps"];
+  const navItems = ["Home", "Travel", "Things To Do", "RSVP", "Photo Dump"];
 
   return (
     <nav className="bg-white md:hidden fixed top-0 left-0 w-full z-50">
