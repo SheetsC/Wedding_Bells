@@ -42,7 +42,7 @@ export const PhotoDumpSection: React.FC = () => {
       <h1 className="text-2xl font-bold mb-4">Upload Your Wedding Photos</h1>
       <div
         id="db-chooser"
-        className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700 cursor-pointer"
+        className="px-4 py-2 bg-black text-white rounded hover:bg-slate-900 cursor-pointer"
       >
         Choose files from Dropbox
       </div>
