@@ -9,7 +9,7 @@ export const NavBar: React.FC<NavBarProps> = ({
   selectedNav,
   setSelectedNav,
 }) => {
-  const navItems = ["Home", "Travel", "Things To Do", "RSVP", "Photo Dumps"];
+  const navItems = ["Home", "Travel", "Things To Do", "RSVP", "Photo Dump"];
 
   return (
     <nav className="bg-gray-100 hidden md:block ">
