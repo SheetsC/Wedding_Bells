@@ -58,6 +58,12 @@ export const HomeSection: React.FC<SectionProps> = ({ setSelectedNav }) => {
       >
         Gift Registry
       </button>
+      <button
+        onClick={() => setSelectedNav("Photo Dump")}
+        className="bg-black text-white py-2 px-4 rounded hover:bg-opacity-80 cursor-pointer w-28 font-lora mx-auto"
+      >
+        Photo Dump
+      </button>
 
 
       <main className="flex w-full py-8 text-black items-center justify-center">
