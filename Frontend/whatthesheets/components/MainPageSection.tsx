@@ -24,6 +24,7 @@ export const MainPageSection: React.FC = () => {
     if (selectedNav == "Travel") return <TravelSection />;
     if (selectedNav == "Things To Do") return <ThingsToDoSection />;
     if (selectedNav == "RSVP") return <RSVPSection />;
+    if (selectedNav == "Photo Dump") return <PhotoDumpSection/>;
     return <HomeSection setSelectedNav={setSelectedNav} />;
   };
   
