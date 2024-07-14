@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import Image from "next/image";
 
 declare global {
     interface Window {
@@ -6,7 +7,7 @@ declare global {
     }
   }
   
-const DropboxUploader = () => {
+export const PhotoDumpSection: React.FC = () => {
   useEffect(() => {
     const script = document.createElement('script');
     script.src = 'https://www.dropbox.com/static/api/2/dropins.js';
@@ -49,5 +50,5 @@ const DropboxUploader = () => {
   );
 };
 
-export default DropboxUploader;
+
 

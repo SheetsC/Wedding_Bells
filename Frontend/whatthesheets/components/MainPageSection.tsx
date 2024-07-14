@@ -8,6 +8,7 @@ import {
   HomeSection,
   MobileMenu,
   NavBar,
+  PhotoDumpSection,
 } from "@/components";
 import useWarmUp from "@/hooks/useWarmUp";
 
